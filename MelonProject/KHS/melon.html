@@ -10,7 +10,8 @@
     <script src="event.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
 
 </head>
@@ -45,24 +46,36 @@
             <div class="list_wrap">
                 <div class="list_row1">
                     <div class="album_frame1">
-                        <dd class="singer"></dd><span class="singer_name">EXO</span>
+                        <div class="hs_singer_name_back">
+                            <a href="#" class="hs_singer_name">Exo</a>
+                        </div>
                     </div>
                     <div class="album_frame2">
-                        <dd class="singer"></dd><span class="singer_name">EXO</span>
+                        <div class="hs_singer_name_back">
+                            <div class="hs_singer_name">다이나믹듀오</div>
+                        </div>
                     </div>
                     <div class="album_frame3">
-                        <dd class="singer"></dd><span class="singer_name">EXO</span>
+                        <div class="hs_singer_name_back">
+                        <div class="hs_singer_name">도쿄리벤저스</div>
+                    </div>
                     </div>
                 </div>
                 <div class="list_row2">
                     <div class="album_frame4">
-                        <dd class="singer"></dd><span class="singer_name">EXO</span>
+                        <div class="hs_singer_name_back">
+                        <div class="hs_singer_name">YOASOBI</div>
+                    </div>
                     </div>
                     <div class="album_frame5">
-                        <dd class="singer"></dd><span class="singer_name">EXO</span>
+                        <div class="hs_singer_name_back">
+                        <div class="hs_singer_name">YOASOBI</div>
                     </div>
+                </div>
                     <div class="album_frame6">
-                        <dd class="singer"></dd><span class="singer_name">EXO</span>
+                        <div class="hs_singer_name_back">
+                        <div class="hs_singer_name">imase</div>
+                    </div>
                     </div>
                 </div>
 
@@ -73,7 +86,7 @@
             <div class="play_control">
                 <div class="move_box">
                     <div class="move">
-                        
+
 
                     </div>
                 </div>
@@ -88,7 +101,7 @@
                         <div class="swiper-slide"><img src="./imgs/big/img05.jpg"></div>
                         <div class="swiper-slide"><img src="./imgs/big/img06.jpg"></div>
                         <div class="swiper-slide"><img src="./imgs/big/img07.jpg"></div>
-                        
+
                     </div>
                     <!-- If we need pagination -->
                     <div class="swiper-pagination"></div>
@@ -125,15 +138,17 @@
 
             const swiper = new Swiper('.swiper', {
                 // Optional parameters
-                direction: 'vertical',
+                direction: 'horizontal',
                 loop: true,
                 autoplay: {
-                    delay : 100,
+                    delay: 1000,
                 },
+
 
                 // If we need pagination
                 pagination: {
                     el: '.swiper-pagination',
+
                 },
 
                 // Navigation arrows
