@@ -35,7 +35,16 @@
     background-image: url("./imgs/all/img01.jpg");
     background-size:cover;
     margin :2px;
+    position: relative;
 }
+
+.hs_singer_name_back{
+    position: absolute;
+    bottom: 0px;
+}
+
+
+
 
 .album_frame2 {
     display: inline-block;
@@ -44,6 +53,7 @@
     background-image: url("./imgs/all/img02.jpg");
     background-size:cover;
     margin :2px;
+    position: relative;
 }
 
 .album_frame3 {
@@ -53,6 +63,7 @@
     background-image: url("./imgs/all/img03.jpg");
     background-size:cover;
     margin :2px;
+    position: relative;
 }
 
 .album_frame4 {
@@ -62,6 +73,7 @@
     background-image: url("./imgs/all/img04.jpg");
     background-size:cover;
     margin :2px;
+    position: relative;
 }
 
 .album_frame5 {
@@ -71,6 +83,7 @@
     background-image: url("./imgs/all/img05.jpg");
     background-size:cover;
     margin :2px;
+    position: relative;
 }
 
 .album_frame6 {
@@ -80,16 +93,12 @@
     background-image: url("./imgs/all/img06.jpg");
     background-size:cover;
     margin :2px;
+    position: relative;
 }
 
-.singer{
-    background-color: #666666;
+.hs_singer_name_back{
+    background-color: gray;
     opacity: 0.5;
-}
-
-.singer_name{
-    color: white;
-    opacity: 1;
 }
 
 
