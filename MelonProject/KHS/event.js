@@ -24,6 +24,17 @@ window.addEventListener("load", function () {
     "imgs/eng/img06.jpg",
   ];
 
+  let all_name = [
+    "Exo",
+    "다이나믹듀오",
+    "도쿄리벤저스",
+    "YOASOBI",
+    "YOASOBI",
+    "imase",
+  ];
+  let kor_name = ["1", "2", "3", "4", "5", "6"];
+  let eng_name = ["가", "나", "다", "라", "마", "사"];
+
   let page_num_flag = 0;
 
   let all_btn = this.document.querySelector("#all_btn");
@@ -41,22 +52,21 @@ window.addEventListener("load", function () {
   let left_btn = this.document.querySelector("#odd_span_left");
   left_btn.addEventListener("click", left_go);
 
-
-  function right_go(){
-    if(page_num_flag==0){
+  function right_go() {
+    if (page_num_flag == 0) {
       kor_img();
       page_num_flag++;
-    } else if (page_num_flag==1){
+    } else if (page_num_flag == 1) {
       eng_img();
       page_num_flag++;
     }
   }
 
-  function left_go(){
-    if(page_num_flag==2){
+  function left_go() {
+    if (page_num_flag == 2) {
       kor_img();
       page_num_flag--;
-    } else if (page_num_flag==1){
+    } else if (page_num_flag == 1) {
       all_img();
       page_num_flag--;
     }
@@ -69,6 +79,18 @@ window.addEventListener("load", function () {
     }
     let page_num_element = document.querySelector(".page_num");
     page_num_element.innerHTML = "1/3";
+    write_all_name();
+  }
+
+  function write_all_name() {
+
+    let names_dom = document.querySelectorAll(".hs_singer_name");
+    
+    let names;
+    for(i=0; i<names_dom.length; i++){
+      names += names_dom[i].innerHTML;
+    }
+    console.log(names);
     
   }
 
@@ -79,7 +101,6 @@ window.addEventListener("load", function () {
     }
     let page_num_element = document.querySelector(".page_num");
     page_num_element.innerHTML = "2/3";
-    
   }
 
   function eng_img() {
@@ -90,12 +111,4 @@ window.addEventListener("load", function () {
     let page_num_element = document.querySelector(".page_num");
     page_num_element.innerHTML = "3/3";
   }
-
-
-
-
-
-
-
-
 });
