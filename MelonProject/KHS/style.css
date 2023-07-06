@@ -36,13 +36,21 @@
     background-size:cover;
     margin :2px;
     position: relative;
+    
 }
 
 .hs_singer_name_back{
     position: absolute;
     bottom: 0px;
+    width: 100%;
+    background-color: rgba(136, 127, 127, 0.7);
+    text-align: center;
 }
 
+.hs_singer_name{
+    color: white;
+    text-decoration: none;
+}
 
 
 
@@ -94,11 +102,6 @@
     background-size:cover;
     margin :2px;
     position: relative;
-}
-
-.hs_singer_name_back{
-    background-color: gray;
-    opacity: 0.5;
 }
 
 
