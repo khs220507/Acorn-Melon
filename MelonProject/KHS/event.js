@@ -32,8 +32,8 @@ window.addEventListener("load", function () {
     "YOASOBI",
     "imase",
   ];
-  let kor_name = ["1", "2", "3", "4", "5", "6"];
-  let eng_name = ["가", "나", "다", "라", "마", "사"];
+  let kor_name = ["BTS", "BTS", "PSY", "BoA", "BoA", "BE"];
+  let eng_name = ["POP", "Bruno Mars", "Sam", "Sam", "Metal", "Boob"];
 
   let page_num_flag = 0;
 
@@ -82,17 +82,7 @@ window.addEventListener("load", function () {
     write_all_name();
   }
 
-  function write_all_name() {
 
-    let names_dom = document.querySelectorAll(".hs_singer_name");
-    
-    let names;
-    for(i=0; i<names_dom.length; i++){
-      names += names_dom[i].innerHTML;
-    }
-    console.log(names);
-    
-  }
 
   function kor_img() {
     for (let i = 0; i < kor_imgs.length; i++) {
@@ -101,7 +91,10 @@ window.addEventListener("load", function () {
     }
     let page_num_element = document.querySelector(".page_num");
     page_num_element.innerHTML = "2/3";
+    write_kor_name();
   }
+
+  
 
   function eng_img() {
     for (let i = 0; i < eng_imgs.length; i++) {
@@ -110,5 +103,27 @@ window.addEventListener("load", function () {
     }
     let page_num_element = document.querySelector(".page_num");
     page_num_element.innerHTML = "3/3";
+    write_eng_name();
+  }
+
+  function write_all_name() {
+    name_arr = document.getElementsByClassName("hs_singer_name");
+    for(i=0; i<name_arr.length; i++){
+      name_arr[i].innerText = all_name[i];
+    }
+  };
+
+  function write_kor_name() {
+    name_arr = document.getElementsByClassName("hs_singer_name");
+    for(i=0; i<name_arr.length; i++){
+      name_arr[i].innerText = kor_name[i];
+    }
+  };
+
+  function write_eng_name() {
+    name_arr = document.getElementsByClassName("hs_singer_name");
+    for(i=0; i<name_arr.length; i++){
+      name_arr[i].innerText = eng_name[i];
+    }
   }
 });
