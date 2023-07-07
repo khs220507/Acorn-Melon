@@ -1,43 +1,51 @@
-.wrap {
-    float: left;
-    min-width: 1200px;
-    min-height: 360px;
+.hs_wrap {
+    width: 1008px;
+    height: 380px;
+    border: 1px solid black;
 }
 
-.album_wrap {
+.hs_album_wrap {
     float: left;
     margin: 5px;
 }
 
-.album_top {
+.hs_album_top {
     display: flex;
+    position: relative;
+    height: 30px;
 }
 
-.album_top_left {
+.hs_album_top_left {
     display: flex;
     margin: auto 0;
     font-size: 5px;
-}
-    
-.album_top_right {
-    display: flex;
-    margin: auto 5px; 
-}
-
-.album_top_right{
-    font-size: 1px;
-}
-
-.album_frame1 {
-    display: inline-block;
-    width: 156px;
-    height: 155px;
-    background-image: url("./imgs/all/img01.jpg");
-    background-size:cover;
-    margin :2px;
     position: relative;
-    
+    left: 5px;
 }
+    
+.hs_album_top_right {
+    height: 30px;
+    display: flex;
+    margin: auto 5px;
+    position: absolute;
+    right: 5px;
+    font-size: 1px;
+    align-items: center;
+}
+
+#hs_all_btn{
+    text-decoration: none;
+}
+
+#hs_kor_btn{
+    text-decoration: none;
+}
+
+#hs_eng_btn{
+    text-decoration: none;
+}
+
+
 
 .hs_singer_name_back{
     position: absolute;
@@ -53,93 +61,117 @@
 }
 
 
+.hs_album_frame1 {
+    display: inline-block;
+    width: 156px;
+    height: 155px;
+    background-image: url("./imgs/all/img01.jpg");
+    background-size:cover;
+    margin :0.25px;
+    position: relative;
+    
+}
 
-.album_frame2 {
+
+.hs_album_frame2 {
     display: inline-block;
     width: 156px;
     height: 155px;
     background-image: url("./imgs/all/img02.jpg");
     background-size:cover;
-    margin :2px;
+    margin :0.25px;
     position: relative;
 }
 
-.album_frame3 {
+.hs_album_frame3 {
     display: inline-block;
     width: 156px;
     height: 155px;
     background-image: url("./imgs/all/img03.jpg");
     background-size:cover;
-    margin :2px;
+    margin :0.25px;
     position: relative;
 }
 
-.album_frame4 {
+.hs_album_frame4 {
     display: inline-block;
     width: 156px;
     height: 155px;
     background-image: url("./imgs/all/img04.jpg");
     background-size:cover;
-    margin :2px;
+    margin :0.25px;
     position: relative;
 }
 
-.album_frame5 {
+.hs_album_frame5 {
     display: inline-block;
     width: 156px;
     height: 155px;
     background-image: url("./imgs/all/img05.jpg");
     background-size:cover;
-    margin :2px;
+    margin :0.25px;
     position: relative;
 }
 
-.album_frame6 {
+.hs_album_frame6 {
     display: inline-block;
     width: 156px;
     height: 155px;
     background-image: url("./imgs/all/img06.jpg");
     background-size:cover;
-    margin :2px;
+    margin :0.25px;
     position: relative;
 }
 
 
-.top_right_element_center {
+.hs_top_right_element_center {
     border-left: solid black;
     border-right: solid black;
     padding: 0px 5px 0px 5px;
 }
 
-.page_num {
+.hs_page_num {
     margin-left: 5px;
+    display: inline-block;
 }
 
-.odd_span_left {
+#hs_odd_span_left {
+    margin: 0px;
+    font-size: 15px;
+    width: 15px;
+    height: 15px;
     border: 1px solid black;
     border-top-left-radius: 50%;
     border-bottom-left-radius: 50%;
 }
 
-.odd_span_right {
+#hs_odd_span_right {
+    margin: 0px;
+    font-size: 15px;
+    width: 15px;
+    height: 15px;
     border: 1px solid black;
     border-top-right-radius: 50%;
     border-bottom-right-radius: 50%;
 }
 
 
-.collection_selection {
+.hs_collection_selection {
     display: flex;
     margin: auto 0;
 }
 
-.page {
+.hs_page {
     margin: auto 0;
+}
+
+.hs_album_top_right{
+
 }
 
 
 
-
+/* 수정 필요 */
 li {
     float: left;
     list-style: none;
@@ -149,28 +181,28 @@ li {
 
 
 
-.event_list {
+.hs_event_list {
     float: left;
 }
 
-.id_wrap {
+.hs_id_wrap {
     float: left;
     margin : 5px;
     white-space: nowrap;
 }
 
-.button_login {
+.hs_button_login {
     font-size: 5px;
     text-align: center;
 }
 
 
-.move {
+.hs_move {
     display: inline-block;
     float: right;
 }
 
-.move_btn{
+.hs_move_btn{
     height: 7px;
     width: 7px;
     border-radius: 50%;
@@ -178,7 +210,7 @@ li {
     border: 1px solid black;
 }
 
-.move_play_and_stop{
+.hs_move_play_and_stop{
     height: 7px;
     width: 7px;
     border-radius: 50%;
@@ -186,11 +218,11 @@ li {
     border: 1px solid black;
 }
 
-.move>span {
+.hs_move>span {
     display: block;
 }
 
-.play_and_stop {
+.hs_play_and_stop {
     display: inline-block;
 }
 
@@ -198,35 +230,39 @@ li {
 
 
 
-.album_frame_right {
+.hs_album_frame_right {
     display: inline-block;
     width: 280px;
-    height: 188px;
+    height: 190px;
     background-image: url("./imgs/login/img01.jpg");
-    background-size:cover;
+    background-size: 280px 190px;
+    background-repeat: no-repeat;
+    border: 1px solid black;
+   
 }
 
-.btn_login{
+.hs_btn_login{
     background-color: #00d344;
-    width: 200px;
+    width: 225px;
     height: 50px;
     border: none;
     margin: 5px;
 }
 
-.btn_login_text{
+.hs_btn_login_text{
     color: white;
 }
 
-.button_login{
+.hs_button_login{
     border: none;
+    margin-top:30px
 }
 
-.top_box{
+.hs_top_box{
     border: 1px solid #e0e0e0;
     margin: 2px;
     margin-top:16px;
-    margin-bottom:8px;
+    margin-bottom:5px;
     padding :22px
 }
 
@@ -239,8 +275,9 @@ li {
 }
 
 .swiper {
-    width: 250px;
-    height: 350px;
+    margin-top: 35px;
+    width: 200px;
+    height: 315px;
 }
 
 .swiper-slide img{max-width:100%; height: 350px;}
