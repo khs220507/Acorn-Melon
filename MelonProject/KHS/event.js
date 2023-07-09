@@ -82,8 +82,6 @@ window.addEventListener("load", function () {
     write_all_name();
   }
 
-
-
   function kor_img() {
     for (let i = 0; i < kor_imgs.length; i++) {
       let img = document.querySelector(".hs_album_frame" + (i + 1));
@@ -93,8 +91,6 @@ window.addEventListener("load", function () {
     page_num_element.innerHTML = "2/3";
     write_kor_name();
   }
-
-  
 
   function eng_img() {
     for (let i = 0; i < eng_imgs.length; i++) {
@@ -108,22 +104,25 @@ window.addEventListener("load", function () {
 
   function write_all_name() {
     name_arr = document.getElementsByClassName("hs_singer_name");
-    for(i=0; i<name_arr.length; i++){
+    for (i = 0; i < name_arr.length; i++) {
       name_arr[i].innerText = all_name[i];
     }
-  };
+  }
 
   function write_kor_name() {
     name_arr = document.getElementsByClassName("hs_singer_name");
-    for(i=0; i<name_arr.length; i++){
+    for (i = 0; i < name_arr.length; i++) {
       name_arr[i].innerText = kor_name[i];
     }
-  };
+  }
 
   function write_eng_name() {
     name_arr = document.getElementsByClassName("hs_singer_name");
-    for(i=0; i<name_arr.length; i++){
+    for (i = 0; i < name_arr.length; i++) {
       name_arr[i].innerText = eng_name[i];
     }
   }
-});
+
+
+    
+  });
