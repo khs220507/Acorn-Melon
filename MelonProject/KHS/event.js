@@ -35,6 +35,10 @@ window.addEventListener("load", function () {
   let kor_name = ["BTS", "BTS", "PSY", "BoA", "BoA", "BE"];
   let eng_name = ["POP", "Bruno Mars", "Sam", "Sam", "Metal", "Boob"];
 
+  let all_title_detail = ["으르렁(Growl)", "죽일 놈 (Guilty)", "Cry Baby", "Into The Night", "Just a Little Step", "NIGHT DANCER"]; 
+  let kor_title_detail = ["1", "2", "3", "4", "5", "6"]; 
+  let eng_title_detail = ["a", "b", "c", "d", "Je", "f"]; 
+
   let page_num_flag = 0;
 
   let all_btn = this.document.querySelector("#hs_all_btn");
@@ -80,6 +84,7 @@ window.addEventListener("load", function () {
     let page_num_element = document.querySelector(".hs_page_num");
     page_num_element.innerHTML = "1/3";
     write_all_name();
+    write_all_detail();
   }
 
   function kor_img() {
@@ -90,6 +95,7 @@ window.addEventListener("load", function () {
     let page_num_element = document.querySelector(".hs_page_num");
     page_num_element.innerHTML = "2/3";
     write_kor_name();
+    write_kor_detail();
   }
 
   function eng_img() {
@@ -100,24 +106,47 @@ window.addEventListener("load", function () {
     let page_num_element = document.querySelector(".hs_page_num");
     page_num_element.innerHTML = "3/3";
     write_eng_name();
+    write_eng_detail();
   }
 
+  function write_all_detail(){
+    let detail_arr = document.getElementsByClassName("hs_hover_content");
+    for(i=0; i <  detail_arr.length; i++){
+      detail_arr[i].innerText = all_title_detail[i];
+    }
+  }
+
+  function write_kor_detail(){
+    let detail_arr = document.getElementsByClassName("hs_hover_content");
+    for(i=0; i <  detail_arr.length; i++){
+      detail_arr[i].innerText = kor_title_detail[i];
+    }
+  }
+
+  function write_eng_detail(){
+    let detail_arr = document.getElementsByClassName("hs_hover_content");
+    for(i=0; i <  detail_arr.length; i++){
+      detail_arr[i].innerText = eng_title_detail[i];
+    }
+  }
+
+
   function write_all_name() {
-    name_arr = document.getElementsByClassName("hs_singer_name");
+    let name_arr = document.getElementsByClassName("hs_singer_name");
     for (i = 0; i < name_arr.length; i++) {
       name_arr[i].innerText = all_name[i];
     }
   }
 
   function write_kor_name() {
-    name_arr = document.getElementsByClassName("hs_singer_name");
+    let name_arr = document.getElementsByClassName("hs_singer_name");
     for (i = 0; i < name_arr.length; i++) {
       name_arr[i].innerText = kor_name[i];
     }
   }
 
   function write_eng_name() {
-    name_arr = document.getElementsByClassName("hs_singer_name");
+    let name_arr = document.getElementsByClassName("hs_singer_name");
     for (i = 0; i < name_arr.length; i++) {
       name_arr[i].innerText = eng_name[i];
     }
