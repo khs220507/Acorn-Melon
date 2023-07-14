@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .jw_total {
+        position: relative;
+        width: 100%;
+        border-top: 4px solid #6ec953;
+        margin-top: -8px;
+        /* border: 1px solid black; */
+        font-family: "돋움", Dotum, "맑은 고딕", "Malgun Gothic", "Apple Gothic",
+          sans-serif;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+      .jw_wrap {
+        /* border: 1px solid black; */
+        justify-content: space-between;
+        margin: 0 auto;
+      }
+      .jw_header {
+        /* border: 1px solid black; */
+        margin: 0 auto;
+        width: 550px;
+      }
+      .jw_header .jw_melon_img {
+        width: 242px;
+        height: 68px;
+        margin-top: 90px;
+        margin-bottom: -120px;
+      }
+      .jw_body {
+        /* border: 1px solid black; */
+        margin: 0 auto;
+        width: 550px;
+        height: 500px;
+        line-height: 20px;
+      }
+      .jw_body a {
+        color: black;
+      }
+      .jw_qrcode {
+        margin-top: 210px;
+        padding-bottom: 10px;
+        float: right;
+        margin-right: 80px;
+      }
+      .jw_btn1 {
+        width: 430px;
+        height: 70px;
+        margin-bottom: 10px;
+        background-color: #fae100;
+        border-radius: 5px;
+        border: none;
+        font-size: 16px;
+      }
+
+      .jw_btn2 {
+        width: 430px;
+        height: 70px;
+        margin-bottom: 50px;
+        border: 1px solid #d9d9d9;
+        background-color: white;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+      .jw_footer {
+        /* border: 1px solid black; */
+        margin: 0 auto;
+        width: 550px;
+        text-align: center;
+      }
+      .jw_footermenu {
+        display: flex;
+        justify-content: center;
+        margin-top: 150px;
+
+        padding-bottom: 30px;
+      }
+      .jw_footermenu a {
+        text-decoration: none;
+        color: black;
+      }
+      .jw_footerCorp {
+        font-size: 11px;
+      }
+      .jw_footerCorp a {
+        text-decoration: none;
+        color: black;
+      }
+      .jw_qrcode a {
+        color: #191919;
+        font-size: 15px;
+        text-decoration: none;
+      }
+      .jw_menu1 a {
+        font-size: 13px;
+        color: #767676;
+      }
+      .jw_menu2 a {
+        font-size: 13px;
+        color: #767676;
+      }
+      .jw_menu3 a {
+        font-size: 13px;
+        color: #767676;
+      }
+      .jw_footer_information {
+        padding-bottom: 15px;
+      }
+      .jw_footer_information p {
+        font-size: 12px;
+        color: #666666;
+      }
+      .jw_footerCorp a {
+        font-size: 11px;
+        color: #969696;
+      }
+      .jw_new a {
+        font-size: 15px;
+        color: #606060;
+      }
+      .jw_img1 {
+        width: 16px;
+        height: 16px;
+
+        position: relative;
+        margin-bottom: -3px;
+      }
+      .jw_img2 {
+        width: 24px;
+        height: 24px;
+
+        position: relative;
+        margin-bottom: -6px;
+      }
+
+      .jw_img3 {
+        width: 16px;
+        height: 15px;
+
+        position: relative;
+        padding-right: 10px;
+      }
+
+      .jw_img4 {
+        width: 17px;
+        height: 17px;
+
+        position: relative;
+        padding-right: 10px;
+      }
+
+      .jw_btn_text {
+        text-decoration: none;
+      }
+
+      .jw_bot:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="jw_total">
+      <div class="jw_wrap">
+        <div class="jw_header">
+          <a
+            href="http://127.0.0.1:5500/front-main/%EB%A9%9C%EB%A1%A0project/melonmain.html"
+          >
+            <img
+              class="jw_melon_img"
+              title="Melon 메인"
+              src="https://cdnimg.melon.co.kr/resource/image/web/member/img_logo206x56.png"
+            />
+          </a>
+        </div>
+        <div class="jw_body">
+          <div class="jw_qrcode">
+            <a href="https://www.melon.com/">
+              <img
+                class="jw_img1"
+                title="카카오 QR코드 로그인"
+                src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCABJAEsDASIAAhEBAxEB/8QAGwABAAIDAQEAAAAAAAAAAAAABgQFAQIDBwD/xAAwEAAABQIDBgUEAwEAAAAAAAAAAQIDBAUREhMxITM1UXKhBjI0U4EUIiNhJkFjcf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDjXJ0lE/LaXYtoik9UTLedh1rHGC+Re02ImQksXIAdzqj7nYYanTW5baHHNTCuXT0MtYisCkriLXUAfRFGqM2Z6mQGVydJRPy2l2LaGUL0jXSBFY4wXyA5E9UTLedh9nVH3OwRU2ImQksXISJdPQy1iKwAo1Omty20OOamH0RRqjNmepkAMriLXUHsL0jXSAEVjjBfIvabLTHSWLkKeuQZK5+Y0i5bRFJmokW77gFUuoIeawlYFJXEWuoZyaj7fcYagzXJba3G9DAPYXpGukCKxxgvkOIiTTGbI9SIDK5Bkrn5jSLltAXFNlpjpLFyEiXUEPNYSsCpM1Ei3fcfZNR9vuAxK4i11B7C9I10gE1BmuS21uN6GH0RJpjNkepEA2VlX+7Bf92GPwf59gLrk6SifltLsW0RSeqJlvOwB9+D/PsMlk32ZfYAM6o+52GGp01uW2hxzUwHoZabBorKv92C/wC7DWIo1RmzPUyAqv1GSzNNLa7FtANyS0rRKD/4RDJobLVKC+CBvwpLek3zVX1FnX3lswjU2dj2gLAsm+zL7DctNg83iVWWqS2RubDMehxFGqM2Z6mQAPWOMF8i9psRMhJYuQoqxxgvkXtNlpjpLFyASJdPQy1iKwKSuItdQVy6gh5rCVgUlcRa6gD2F6RrpFZN8PMzHsxVrizheka6RWTfELMN7LVa4Crm/wAd3H98hxjVZysOfTu3w/sdpv8AItx/XIcY1Jco7n1Dt8P7AWjXhdhtxKyw3I+QvWkE22lBaEQomvFDDjiUFhuZ8xetLJxtKy0MgAmuQZK5+Y0i5bRFJmokW77hq/5xyAD8mo+33GGoM1yW2txvQwxGyPMQCXESaYzZHqRAVX6dJemmptFy2hyjykIb/nAU3hSI9GvmptqLOvsrehGlsrntEuKOj/kAedxKVLTJbM29hGPQ4iTTGbI9SIREeYhPR5SAf//Z"
+              />
+              <strong title="카카오 QR코드 로그인">카카오 QR코드 로그인</strong>
+              <img
+                class="jw_img2"
+                title="카카오 QR코드 로그인 도움말"
+                src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAB/AHEDASIAAhEBAxEB/8QAGQABAAMBAQAAAAAAAAAAAAAAAAECBAMG/8QAKBAAAgIBBAAFBAMAAAAAAAAAAAECAxESITFBEyIyUaEUYXFyNEJS/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/APZgAAAAAIbwQ5xXYFgU8WPuPFj7gXBVTi+ycgSAAAAAAAAAABSc9JWyxLbs4pSmwJdzk8DQ5HaNaxui6ikBm+nb7+R9O12aiMAZtLgTG5p4O7imUnWsbIC0J6kXMnmgzvXNS2A6AAAAABSyWlFnwZ7nqWEBXGueTTCGlFKY+Xc6gACHwBWU0uxGWTPcn7lqU/cDSAAKThqWTPHySZrOF8dtgOsJalkscKpYSR3AAACJelmWL1TaNM/SzNTvY/yBpgsIsQiQABD4ArKMXyIqK4OFtmC1U8gaAAAKTWUXIYGVPFsV90azFL+RD9kbQAAArP0szVbWP8mqXDMzWmTYGlElK3mJcAQ+GSQ+GBjvLUdFby1HQGtcALgACG8EnO2WEBnlvfD9kbDLFZnF/c1AAAAOF8dtjuRKOeQOFU8LBoMs4uM8o6V2Z5A7EPgJ5JAy21ORaqtxO+BgCQCG0uQD2Rnulr2RayzpFaoNy3A6UxxE6kJYRIAAAAABWUdSM8q3A1ENJ8gZ43NbHWNmSJVLpHOVdnS+QNCkvchyXuZfDv8A8/KCrv7j8oDvK3Bylc5bExrs/svk6xrS5QHKFWrc7xjhEpJcEgAAAAAAAAAAAAAAAAAAAAAAAAAAB//Z"
+              />
+            </a>
+          </div>
+
+          <div>
+            <button class="jw_btn1">
+              <img
+                class="jw_img3"
+                src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCABPAFcDASIAAhEBAxEB/8QAGgABAAMBAQEAAAAAAAAAAAAAAAQFBgMBAv/EAC0QAAICAgECBAUDBQAAAAAAAAABAgMEEQUSIQYTMaEiQVFxsTI0U1KDk8HR/8QAGgEAAgMBAQAAAAAAAAAAAAAAAAMBBAUGAv/EAB0RAAICAgMBAAAAAAAAAAAAAAABAhEDBBIhMUH/2gAMAwEAAhEDEQA/ANAeN6W2G9epWZ+f5MWlLuctCDm6Rbbok359VKfU/cqMrltt9Fs19pFNl50shveyG3tmxh0oxVyEvIWVvJZDfw5Ny+1jOD5HM3+7v/yP/pEBcWKC+C7ZPr5LKT+LKvf9xlhjcrJa67rH95soAeZ68JfCVJo2+NydViS3t/cnRmprsYGjJlTLaNDxnJuyKUnoy9jTcO4jYzv0vwfMJKUU0wZw0j596opUn85a9mZDksiVl71LsaLxJNwwK2v5V+GZGyXVLZsaGNceYjI+6PkAGoKAAAAAAAHbHtlC2OnpbOJ6np7IatUBs+Lylc1DfdQ37gq/DNrnnTi/lU/ygc5tQ4ZKLMHaJ/iWHXx9aX8q/DMlOPS9G7z6fPpjHW9S37MyHI47ruNDQyLjwF5F3ZBABqCgAAAAAAAS29A7Y9TnZHX1IbpWBc+GK3HPnL61P8oFpxWL5MlPXrDXugc7tT55LLMFSLMquR46NsXPtstjxpNaaE48jg7R6asweViyqk/hfqRfQ1XORrgu0UZi39b0dBr5XkjbK0lTPgHWqh2ehKXGWNb7jpZIx9ZFMgBJv0LKPD2SfzJdHBWJpvYqWxjj9JUWVFOPOyWulmg4zjFpSktNE/F4+NSXVEsIwjH9K0ZuxuOXURsYV6IR6IpfQH0DNGg8k9LZ6fM49Udb0CAzviCTm0o9/QrcTAstnuUexpMjivPlt3a7/wBG/wDZKoxo0wUdp6+ejRjtRx41GPorhbtkLD4yqMe69iasStI7npSlllJ22MSSOMceEfQ6paPQLbb9JAAIAAAAP//Z"
+              />
+              <a
+                class="jw_btn_text"
+                href="./카카오로그인.html"
+                title="카카오계정 로그인"
+              >
+                카카오계정 로그인
+              </a>
+            </button>
+          </div>
+          <div>
+            <button class="jw_btn2">
+              <img
+                class="jw_img4"
+                src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCABkAFYDASIAAhEBAxEB/8QAGgAAAgMBAQAAAAAAAAAAAAAAAAUDBAYCAf/EAC8QAAICAgIAAwUHBQAAAAAAAAABAgMEEQUhEhMxQVGBsdEyQlJxgpHhIiQzY3P/xAAZAQACAwEAAAAAAAAAAAAAAAADBAACBQH/xAAiEQACAwACAwACAwAAAAAAAAAAAQIDEQQSEyExQWEUIiP/2gAMAwEAAhEDEQA/ANmAAQgAAEIAABCAcyl4UdFHk7XXXtP2HG8WlJy6x04yOUVMteV4v1fwRV8143ryNfr/AIE1tspy22cRk0+hZ2S0y5cuzfT9GsryFOClpL4gIK8qUYpbAJ5BlcpYaUAOJzUE2/YGHtw6bS9Tl2QXrJC7J5KK2lroW25rk+pA3YkKz5MY/DRedX+NB51f40ZV5Fj++zqGTNPubKeUD/N/RqlOL9GijysHZV0t9C+jkPDrxMY1ZcMhKOky/ZSWBfLG2PUz1kHF60cJNse5HHO2W4oir4qcX3sC63oi+NPfSKMMeTjvwgaCrGUYJOIF/GMrieiayahHbE2fmtS1B9FvkMjVco+5tGfnNyZLJ/hE5V2f1QTm5NtnIEtVLm9aYD6Z2OTIgGMeNckR3YDrW+y3VhHTNLcKRNTkSqe0RSi4+qPCvwGm4s0eFlKcEpPsYL0Mrh3ONq7NJRb5kV+Q1XLUa3Gt7rGTAABBszmfa3dbHfpOXzF5YzX/AHd//SXzK4lJ+zBteyZJTW7HpD/BxYKtOS7FPGpOzv3mioWoBql+RziVp+2equK9hzOmEl2iUA2GjiEXI4qUtxXQpktNo02ak4yM3b/kl+YtYsZkcqCjLUFb1NMfcVY5oz6HXCPZK37JxX/okOQABo2DMZ0NZNz/ANkvmUx1yNH25a9ZNiVpr1E5rGYd8OsixiWque2aPEsU6tmUT0XsXNnXpb6LQngXj3dHjNKePoXQz467kRX5+o/0sP3RoO+CWnXI5Cg3ERTe5tkt98rZbZCLTl2ZlXWeSWnsVtjzh4eET48HK1I0eFV5aRepe9DcSGy7FsAAZNYgyavNr0Z/NxnVPWjTlbIxo2J9dg5w7C19PkX7Mq1oBhkYE020uinKiUfUWcWjJlXKL9kfifvYbfvYNaPVBs4U9nh7GLfsJq8Wc2tDPDwGnua6LKLYWumU2c4GHvU2OktJHFdcYR0kSDUY9UbFVarWAAAWCgAAQhxOtWLT38CrZxtNj7lZ8GvoAFJC9qT+kT4TGf37f3X0PY8Njx9J2/uvoAA8Qqox34WK8Kur7Mp/FosJaWgALEdrWI9AALBQAAIQ/9k="
+              />
+              <a
+                class="jw_btn_text"
+                href="./멜론로그인.html"
+                title="멜론아이디 로그인"
+                >멜론아이디 로그인</a
+              >
+            </button>
+          </div>
+
+          <div class="jw_new">
+            <a href="./회원가입.html" title="회원가입">회원가입</a>
+          </div>
+        </div>
+        <div class="jw_footer">
+          <div class="jw_footermenu">
+            <div class="jw_menu1">
+              <a
+                class="jw_bot"
+                href="https://info.melon.com/terms/web/terms1_1.html"
+                title="이용약간"
+                >이용약관&nbsp;&#124;&nbsp;</a
+              >
+            </div>
+            <div class="jw_menu2">
+              <a
+                class="jw_bot"
+                href="https://info.melon.com/terms/web/terms1_3.html"
+                title="위치기반서비스 이용약관"
+                ><strong>위치기반서비스 이용약관</strong>&nbsp;&#124;&nbsp;</a
+              >
+            </div>
+            <div class="jw_menu3">
+              <a
+                class="jw_bot"
+                title="개인정보처리방침"
+                href="https://info.melon.com/terms/web/terms3.html"
+                ><strong>개인정보처리방침</strong></a
+              >
+            </div>
+          </div>
+          <div class="jw_footer_information">
+            <p>문의전화 : 1566-7727 (평일 09:00-18:00. 유료)</p>
+          </div>
+          <div class="jw_footerCorp">
+            <a href="https://kakaoent.com/">&copy; Kakao Entertainment Corp.</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

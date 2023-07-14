@@ -1,0 +1,184 @@
+PART 김재열
+
+===[팝업]===
+
+처음 창을 오픈했을 때 팝업창을 구현
+<script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const popupContainer = document.querySelector(".jy_popup-container");
+        const popupClose = document.querySelector(".jy_popup-close");
+        popupClose.addEventListener("click", function () {
+          popupContainer.style.display = "none";
+          popupClose.removeEventListener("click", closePopup);
+        });
+      });
+    </script>
+다음 과 같이 DOMContentLoaded 이벤트를 이용하여 초기 HTML 문서를 완전히 불러오고 분석했을 때 팝업창을 띄우도록 했습니다. 팝업창이 뜨고 난 이 후 버튼을 클릭하면 display가 none이 되도록 설정하여 팝업을 끄게 했습니다.
+
+DOMContentLoaded?
+
+
+===[헤더 상단부]===
+파트별 다른 호버 스타일을 적용했습니다.
+
+===[헤더 중반부]===
+로고와 검색창을 넣었으며 우측에는 TOP10 롤링 배너를 구현했습니다.
+
+롤링배너 코드는 아래와 같습니다.
+<script>
+    let interval;
+    // addEventListener는 이벤트를 등록하는 방식이며 여러개의 이벤트핸들러를 등록가능
+    document.addEventListener("DOMContentLoaded", () => {
+      // 롤링 초기화
+      interval = window.setInterval(rollingCallback, 3000);
+    });
+    function rollingCallback() {
+      //.prev 클래스 삭제
+      document.querySelector(".rollingbanner .prev").classList.remove("prev");
+      //.current -> .prev
+      let current = document.querySelector(".rollingbanner .current");
+      current.classList.remove("current");
+      current.classList.add("prev");
+      //.next -> .current
+      let next = document.querySelector(".rollingbanner .next");
+      //다음 목록 요소가 널인지 체크
+      if (next.nextElementSibling == null) {
+        document
+          .querySelector(".rollingbanner ul li:first-child")
+          .classList.add("next");
+      } else {
+        //목록 처음 요소를 다음 요소로 선택
+        next.nextElementSibling.classList.add("next");
+      }
+      next.classList.remove("next");
+      next.classList.add("current");
+    }
+  </script>
+총 10개의 li중 첫번째와 다음 그리고 마지막 li에만 class를 적용해주었고 시간이 흐름에 따라 이전 배너의 요소를 삭제하고 다음 요소가 나오도록 설정했습니다. 이후 마지막 요소에 도달했을 때 null값인지를 판단하여 null일경우 처음요소를 다음 요소로 선택하게끔 하여 첫번째 요소로 돌아갑니다.
+
+===[세부 페이지]===
+카카오로그인, 멜론아이디로그인, 회원가입, 카카오계정 만들기 4개를 만들었습니다.
+세부페이지 순서 :
+1) 카카오로그인페이지(여기에 툴팁 js있습니다.)
+2) 멜론아이디 로그인 페이지
+3) 회원가입 페이지
+4) 카카오계정만들기 페이지
+
+<script>
+      document.addEventListener("click", function (event) {
+        let tooltip = document.getElementById("tooltip");
+        let image = document.getElementById("image");
+        if (event.target === image) {
+          tooltip.classList.add("show");
+        } else {
+          tooltip.classList.remove("show");
+        }
+      });
+    </script>
+
+이미지를 클릭했을 때 숨겨진 툴팁이 보이게 했으며
+다른 곳을 클릭하면 툴팁을 remove하게 만들었습니다.
+
+================================================================================================================================================================================================================
+PART 문나정
+
+<코드 설명>
+.NJ_chart_list{
+            border-bottom: 1px solid #E9EDEF;
+            display: flex;
+            width: 278px;
+            height: 32.2px;
+            position: relative;
+        }
+.NJ_chart_list1{
+            border-bottom: 1px solid #E9EDEF;
+            display: flex;
+            width: 278px;
+            height: 68.2px;
+            position: relative;
+        }
+.NJ_chart_title_info{
+            display: flex;
+            width: 200px;
+        }
+.NJ_chart_title_info2{
+            display: none;
+        }
+.NJ_abm_info{
+            width: 200px;
+            display: flex;
+            position: relative;
+        }
+.NJ_abm_info2{
+            display: none;
+        }
+ <!--1위-->
+                <div class="NJ_chart_list1" onmouseover="NJ_change_chart_high(this)" onmouseout="NJ_change_chart_out_high(this)">
+                    <!--순위-->
+                    <div class="NJ_chart_rank1_high" >1<span class="NJ_rank_1"> - 0</span></div>
+                    <div class="NJ_chart_title_info2">
+                        <!--노래 제목-->
+                        <div class="NJ_chart_title">퀸카 (Queencard)</div>
+                        <!--아티스트명-->
+                        <div class="NJ_chart_artist">(여자)아이들</div>
+                    </div>
+                    <div class="NJ_abm_info">
+                        <div class="NJ_ab_img">
+                            <img src="https://cdnimg.melon.co.kr/cm2/album/images/112/40/232/11240232_20230509151820_500.jpg/melon/quality/80/resize/48/optimize">
+                        </div>
+                        <div class="NJ_ab_title">
+                            <p><strong>퀸카 (Queencard)</strong><br>(여자)아이들</p>
+                        </div>
+                    </div>
+                </div>
+function NJ_change_chart_high(a){
+            let b = a.firstElementChild.nextElementSibling;
+            b.className='NJ_chart_title_info2';
+            a.className='NJ_chart_list1';
+            let c = b.nextElementSibling;
+            c.className='NJ_abm_info';
+            let d = a.firstElementChild;
+            d.className='NJ_chart_rank1_high'
+        }
+        function NJ_change_chart_out_high(a){
+            let b = a.firstElementChild.nextElementSibling;
+            b.className='NJ_chart_title_info';
+            a.className='NJ_chart_list';
+            let c = b.nextElementSibling;
+            c.className='NJ_abm_info2';
+            let d = a.firstElementChild;
+            d.className='NJ_chart_rank_high'
+        }
+앨범 이미지가 담긴 부분과 텍스트 정보만 담긴 부분을  class명을 변경해주어  display:none 속성을 통해 제어해준다.
+자바스크립트의 마우스 이벤트인 mouseover과 mouseout을 사용한다.
+mouseover일 때 각 순위의 정보가 담긴 div의 높이를 증가시키기 위해 클래스 명을 chart_list1로 변경한다.
+그리고 텍스트 정보를 숨기기 위해 클래스 명을 NJ_chart_title_info2으로 변경하며,앨범 이미지 정보를 보여주기 위해 클래스 명을 NJ_abm_info으로 변경한다.
+mouseout일 때는 mouseover와 반대로 작성하였다.
+
+============================================================================================================================================================================
+
+PART 이정훈
+
+<서브 페이지 앨범 정보 페이지>
+크게 앨범정보, 수록곡, 앨범소개, 댓글, 플레이리스트, 좋아요 한 사람으로 6개로 나뉘어 져 있음
+거의 div로 이루어져 있으며 정보 나열 부분에서는 ul태그를 활용.
+앨범정보 부분은 이미지칸과 정보칸 두 개로 나누었고, 정보칸의 활용 될 수 있는 부분은 버튼으로 구현
+발매일 부분과 별점 부분은 정의 목록태그 dl을 활용하여 구현
+수록곡 부분은 table을 활용하고 세로선만 제거하여 사용, 버튼과 체크박스를 사용하였고 곡 정보에 hover를 사용해 밑줄로 강조할 수 있게 구현
+앨범소개 부분은 height로 크기를 고정시키고 내용이 넘어가는 부분은 overflow:hidden을 사용하여 가리고 sctipt로 버튼을 누르면 height를 auto로 바꾸어 원래 크기로 돌아가면서 본 내용이 다 보이게 구현
+댓글 부분은 유저의 이미지와 textarea를 활용 button은 hover시 테두리 강조
+댓글 게시판은 좋아요,싫어요,신고 button과 답글을 눌렀을 때 바로 밑으로 display:none이 되어 있던 div태그를 block으로 바꾸어 보일 수 있도록 구현
+게시판을 넘길 수는 없지만 버튼을 만듬
+select와 input와 button을 사용하여 검색부분 구현
+플레이 리스트 부분은 div로 감싸진 두개의 플레이리스트를 ul li로 나열하고 안에 앨범정보부분 처럼 이미지와 정보칸으로 나누어 구현
+좋아요 부분은 ul li를 활용해 4개로 나열하고 유저 이미지와 정보를 구현
+
+
+==============================================================================================================================================================================
+
+PART 박지원
+
+<fotter>
+우선 총4개의 부분으로 나누어 전체를 감싸는 div와 3개의 div로 틀을 만들었으며 a링크를 사용하여 링크를 걸고 강조하고 싶은 부분은 strong태그를 넣어서 강조하였고 hover 를 사용하여 마우스 올릴 시  색 변경 ,밑줄 생기거나 혹은 없어지게 하였습니다 3개의틀로 나누었던 div들을 position: relative 사용하여 완성하였습니다.
+
+

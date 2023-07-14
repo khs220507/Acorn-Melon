@@ -1,0 +1,3259 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <script src="event.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+    <style>
+      .jy_total {
+        position: relative;
+        width: 100%;
+        height: 192px;
+        /* border: 1px solid black; */
+        border-top: 4px solid #6ec953;
+        margin-top: 0px;
+        font-family: "돋움", Dotum, "맑은 고딕", "Malgun Gothic", "Apple Gothic",
+          sans-serif;
+      }
+      .jy_popup-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+      }
+
+      .jy_popup-content {
+        background: #fff;
+        padding: 20px;
+        text-align: center;
+      }
+      .jy_popup-ticket {
+        /* border: 4px solid black; */
+        display: flex;
+        list-style: none;
+        width: 512px;
+        justify-content: center;
+        padding: 0;
+      }
+      .jy_popup-logo1 {
+        width: 236px;
+        height: 315px;
+        margin-right: 10px;
+      }
+      .jy_popup-logo2 {
+        width: 236px;
+        height: 315px;
+      }
+
+      .jy_popup-checkbox {
+        margin-bottom: 10px;
+      }
+      label {
+        font-size: 12px;
+        font-family: "Dotum", "돋음", "Apple Gothic", sans-serif;
+      }
+
+      .jy_popup-close {
+        background: white;
+        color: black;
+        border: 1px solid black;
+        width: 36px;
+        height: 26px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-left: 265px;
+        font-size: 12px;
+        font-family: "Dotum", "돋음", "Apple Gothic", sans-serif;
+        letter-spacing: -1px;
+        box-shadow: 0px 0px 1px #000;
+        opacity: 0.5;
+      }
+      .jy_popup-close:hover {
+        opacity: 1;
+      }
+      .jy_header {
+        /* border: 1px solid black; */
+        width: 1008px;
+        height: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-decoration: none;
+        margin: 0 auto;
+        margin-top: 7px;
+      }
+
+      .line {
+        /* 1px아래 단위 설정 불가 흐리게해서 착시 이용 */
+        width: 100%;
+        margin-bottom: -40px;
+        border-bottom: 2px solid;
+        margin-top: 7px;
+      }
+
+      .w0_2 {
+        opacity: 0.1;
+      }
+      .jy_ticket a {
+        text-decoration: none;
+        color: gray;
+        font-weight: 300;
+        font-size: 15px;
+      }
+      .jy_ticket a:hover {
+        color: #6ec953;
+        font-weight: bolder;
+        font-size: 15px;
+      }
+
+      .jy_nav ul {
+        list-style: none;
+        margin-bottom: 2px;
+      }
+
+      .jy_nav li {
+        display: inline-block;
+        /* padding: 11px 7px; */
+        /* border-right: 1px solid black; */
+        margin: 0 7px 0 0;
+        padding-right: 7px;
+      }
+
+      .jy_nav li a {
+        text-decoration: none;
+        font-size: 12px;
+        color: gray;
+        font-weight: 100;
+      }
+
+      .jy_nav li a:hover {
+        text-decoration: none;
+        color: black;
+        font-weight: bolder;
+      }
+      .jy_body {
+        /* border: 1px solid black; */
+        width: 1008px;
+        height: 200px;
+        display: flex;
+        align-items: center;
+        margin: 0 auto;
+      }
+
+      .jy_logo {
+        /* content: url(https://cdnimg.melon.co.kr/resource/image/web/common/logo_melon142x99.png); */
+        width: 142px;
+        height: 99px;
+        margin-left: -4px;
+        /* border: 1px solid black; */
+      }
+      .jy_searchwrapper {
+        display: flex;
+        width: 300px;
+
+        margin: 15px;
+        padding: 5px;
+        border: 3px solid #6ec953;
+        border-radius: 30px;
+        margin-top: 33px;
+        height: 45px;
+      }
+
+      .jy_searchwrapper input {
+        flex: 9;
+        padding-left: 7px;
+        border: none;
+        margin-left: 10px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        /* outline: none; */
+      }
+      input:focus::placeholder {
+        color: transparent;
+      }
+
+      .jy_searchimg {
+        flex: 1;
+        margin-right: 8px;
+      }
+      /* .container {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              margin: 0 auto;
+            } */
+
+      .rollingBtn {
+        border: 0px solid black;
+        font-size: smaller;
+        border-radius: 30px;
+        background-color: #6ec953;
+        color: white;
+        text-align: center;
+        margin-top: 15px;
+        width: 52px;
+        height: 19px;
+      }
+      /* 배너 컨테이너 */
+      .rollingbanner {
+        width: 160px;
+        height: 32px;
+        font-size: 0.8rem;
+        /* letter-spacing: -1px; */
+        padding: 7px 15px;
+        box-sizing: border-box;
+        /* background-color: #f0f0f0; */
+        /* border-radius: 16px; */
+        margin-top: 21px;
+      }
+
+      /* 롤링 배너 */
+      .rollingbanner > .wrap {
+        position: relative;
+        width: auto;
+        height: 100%;
+        box-sizing: border-box;
+        overflow: hidden;
+        border: none;
+        top: -5px;
+        left: -1px;
+      }
+      .rollingbanner ul {
+        list-style: none;
+      }
+
+      .rollingbanner li {
+        position: absolute;
+        top: -18px;
+        left: 0;
+      }
+
+      /* 이전, 현재, 다음 롤링 배너 표시 */
+      .rollingbanner li.prev {
+        top: 18px;
+        transition: top 0.5s ease;
+      }
+      .rollingbanner li.current {
+        top: 0;
+        transition: top 0.5s ease;
+      }
+      .rollingbanner li.next {
+        top: -18px;
+      }
+      .rollingbanner a {
+        display: block;
+        display: -webkit-box;
+        width: 160px;
+        text-decoration: none;
+        -webkit-line-clamp: 1;
+        /* weblit-line-clamp는 보여지는 콘텐츠의 줄 수를 정할 수 있다 */
+        /*  하나만 보여야 되서 1로 지정*/
+        -webkit-box-orient: vertical;
+        /* orient는 박스의 흐름을 정한다 vertical=세로방향 흐름 */
+        /* horizontal은 가로 방향 흐름 */
+        overflow: hidden;
+        color: #000;
+        padding-top: 4px;
+      }
+
+      /* 반대 방향으로 진행 */
+      .rollingbanner.reverse li.prev {
+        top: -18px;
+        transition: top 0.5s ease;
+      }
+      .rollingbanner.reverse li.next {
+        top: 18px;
+      }
+
+      .menu {
+        display: flex;
+        position: relative;
+        /* border: 1px solid black; */
+      }
+      .menu-item {
+        width: 160px;
+        height: 20px;
+        /* border: 1px solid black; */
+
+        /* background-color: white; */
+        list-style: none;
+        /* overflow: hidden; */
+        position: absolute;
+        right: 28px;
+        top: 6px;
+      }
+
+      .sub-menu {
+        /*display:none    <->  display:block  => transition 효과 사용못함*/
+        height: 0;
+        background-color: white;
+        /* border: 1px solid black; */
+        border-top: 0px solid black;
+        overflow: hidden; /* 넘치는 내용은 감추기*/
+        text-overflow: ellipsis;
+        list-style: none;
+        padding-left: 0px;
+        font-size: 0.8rem;
+        width: 145px;
+      }
+      .sub-menu a {
+        text-decoration-line: none;
+        color: #000;
+      }
+      .sub-menu li {
+        padding-left: 15px;
+        padding-bottom: 4px;
+      }
+
+      .menu-item:hover {
+        /* height: 300px; */
+        /* height: 300px; */
+        display: visible;
+        /* border: 1px solid black; */
+        z-index: 9999;
+
+        display: visible;
+        /* border: 1px solid black; */
+      }
+      .menu-item:hover .sub-menu {
+        height: 100px;
+        border: 1px solid black;
+      }
+
+      .menu:hover .sub-menu {
+        height: 250px; /*height:0px  ;  overflow:hidden  -> height:300px*/
+      }
+      .menu:hover .menu-item {
+        height: 200px;
+      }
+
+      .jy_footer {
+        /* border: 1px solid black; */
+        width: 1008px;
+        height: 100px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 auto;
+        margin-top: -65px;
+        margin-bottom: -35px;
+      }
+
+      .jy_footer ul {
+        list-style: none;
+        margin-left: -60px;
+      }
+
+      .jy_footer li {
+        display: inline-block;
+        margin-left: 20px;
+      }
+
+      .jy_footer li a {
+        text-decoration: none;
+        font-size: 16px;
+        color: black;
+        font-weight: bold;
+      }
+
+      .jy_footer li a:hover {
+        text-decoration: none;
+        color: #6ec953;
+      }
+      .jy_mymusic {
+        margin-top: -19px;
+      }
+      .jy_mymusic a {
+        color: gray;
+        font-weight: bold;
+        text-decoration: none;
+        margin-right: 15px;
+      }
+      .jy_mymusic a:hover {
+        color: #6ec953;
+      }
+      /* body1 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */
+      .NJ_wrap {
+        /* border: 1px solid black; */
+        width: 1008px;
+        display: flex;
+        position: relative;
+        margin: 0 auto;
+      }
+      .NJ_music_title {
+        /*인기있어요--음악 제목*/
+        font-weight: bolder;
+        width: 223px;
+        height: 16px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: black;
+        font-size: 14px;
+      }
+      .NJ_music_artist {
+        /*인기있어요--가수 이름*/
+        color: blueviolet;
+        width: 223px;
+        height: 16px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: #888;
+        font-size: 12px;
+      }
+      .NJ_tv_txt {
+        /*인기있어요 멜론티비*/
+        color: #7cb710;
+        width: 223px;
+        height: 16px;
+        font-size: 11px;
+      }
+      .NJ_info {
+        /*인기있어요 정보들*/
+        display: flex;
+        flex-wrap: wrap;
+        width: 704px;
+        padding: 0px;
+      }
+      .NJ_info a {
+        text-decoration: none;
+      }
+      .NJ_Artists_img {
+        width: 223px;
+        height: 148px;
+      }
+
+      .NJ_wrap1 {
+        width: 704px;
+        height: 472px;
+        margin-top: 32px;
+        margin-bottom: 49px;
+      }
+
+      .NJ_chart_wrap {
+        width: 280px;
+        height: 472px;
+        border: 1px #666;
+        margin-top: 32px;
+        margin-left: 24px;
+      }
+      .NJ_info_header {
+        display: flex;
+        width: 704px;
+        height: 25px;
+        position: relative;
+        border-bottom: 1px solid #666;
+      }
+      .NJ_txt_title {
+        font-size: 15px;
+        position: absolute;
+        top: -10px;
+      }
+      .NJ_txt_ats {
+        font-size: 12px;
+        font-weight: 50;
+      }
+      .NJ_info_btn {
+        position: absolute;
+        right: 0px;
+        font-size: 12px;
+        top: 1px;
+      }
+      .NJ_info_btn_left {
+        border: 0px;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+      }
+      .NJ_info_btn_right {
+        border: 0px;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+      }
+
+      .NJ_item {
+        width: 223px;
+        height: 204px;
+        margin-top: 16px;
+        margin-bottom: 2px;
+        margin-left: 16px;
+      }
+
+      .NJ_item p {
+        width: 223px;
+        height: 17px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+      }
+      #NJ_item_wrap_left {
+        margin-left: 0px;
+      }
+      .NJ_artist_wrap {
+        margin-left: 16px;
+      }
+      .NJ_info {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .NJ_chart_header {
+        display: flex;
+        width: 280px;
+        height: 25px;
+        position: relative;
+      }
+      .NJ_chart_chart {
+        width: 80px;
+        height: 15px;
+        font-size: 15px;
+        position: absolute;
+        border-left: 1px solid #e9edef;
+        border-right: 1px solid #e9edef;
+      }
+      .NJ_chart_time {
+        width: 121px;
+        height: 18px;
+        font-size: 12px;
+        position: absolute;
+        right: 3px;
+        bottom: 17px;
+      }
+      .NJ_chart_time p {
+        position: absolute;
+        right: 3px;
+        bottom: -28px;
+      }
+
+      .NJ_chart_chart a {
+        text-decoration: none;
+        color: black;
+        font-weight: bolder;
+        border-left: 1px solid #e9edef;
+        border-right: 1px solid #e9edef;
+      }
+      .NJ_chart_btn {
+        position: relative;
+        text-decoration: none;
+      }
+      .NJ_chart_footer_a a {
+        text-decoration: none;
+        color: #666;
+      }
+      .NJ_chart_btn_top {
+        width: 94px;
+        height: 29px;
+        padding: 0px;
+        margin: 0px;
+        border: 1px solid #e9edef;
+        position: absolute;
+        left: 0px;
+        background-color: white;
+        border-right: 0px;
+        color: #7cb710;
+        border-top: 1px solid #7cb710;
+      }
+      .NJ_chart_btn_pop {
+        width: 94px;
+        height: 29px;
+        padding: 0px;
+        margin: 0px;
+        border: 1px solid #e9edef;
+        position: absolute;
+        left: 94px;
+        background-color: white;
+      }
+      .NJ_chart_btn_ats {
+        width: 94px;
+        height: 29px;
+        padding: 0px;
+        margin: 0px;
+        border: 1px solid #e9edef;
+        position: absolute;
+        right: 0px;
+        background-color: white;
+      }
+      .NJ_chart_top_all {
+        position: absolute;
+        top: 85px;
+        width: 280px;
+        height: 416px;
+      }
+      .NJ_chart_ats_all {
+        position: absolute;
+        top: 85px;
+        width: 280px;
+        height: 416px;
+        display: none;
+        border-left: 1px solid #e9edef;
+        border-right: 1px solid #e9edef;
+      }
+      .NJ_chart_pop_all {
+        position: absolute;
+        top: 85px;
+        width: 280px;
+        height: 416px;
+        display: none;
+        border-left: 1px solid #e9edef;
+        border-right: 1px solid #e9edef;
+      }
+      .NJ_chart_list {
+        border-bottom: 1px solid #e9edef;
+        display: flex;
+        width: 278px;
+        height: 32.2px;
+        position: relative;
+        border-left: 1px solid #e9edef;
+        border-right: 1px solid #e9edef;
+      }
+      /*차트 하단 부분*/
+      .NJ_chart_footer {
+        position: relative;
+        width: 275px;
+        height: 30px;
+        font-size: 12px;
+        border-left: 1px solid #e9edef;
+        border-right: 1px solid #e9edef;
+      }
+      .NJ_chart_footer_btn {
+        position: absolute;
+        left: 5px;
+        top: 3px;
+      }
+      .NJ_chart_footer_a {
+        position: absolute;
+        right: 0px;
+        top: 5px;
+      }
+
+      .NJ_chart_list1 {
+        border-bottom: 1px solid #e9edef;
+        display: flex;
+        width: 278px;
+        height: 68.2px;
+        position: relative;
+      }
+      .NJ_chart_title_info {
+        display: flex;
+        width: 200px;
+      }
+      .NJ_ab_title {
+        width: 100px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        position: absolute;
+        left: 60px;
+        top: 5px;
+      }
+      .NJ_ab_title p {
+        font-size: 12px;
+      }
+      .NJ_ab_title_ats {
+        width: 100px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        position: absolute;
+        left: 60px;
+        top: 10px;
+      }
+      .NJ_ab_title_ats p {
+        font-size: 12px;
+      }
+      .NJ_ab_img {
+        width: 50px;
+        margin: 0px;
+        position: absolute;
+        top: 10px;
+      }
+      .NJ_ab_img img {
+        width: 48px;
+        height: 48px;
+      }
+      .NJ_abm_info {
+        width: 200px;
+        display: flex;
+        position: relative;
+      }
+      .NJ_chart_rank_high {
+        width: 71px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 17px;
+        text-align: center;
+        margin-top: 7px;
+        color: #7cb710;
+      }
+      .NJ_chart_rank1_high {
+        width: 71px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 30px;
+        text-align: center;
+        margin-top: 7px;
+        color: #7cb710;
+      }
+      .NJ_chart_rank {
+        width: 71px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 17px;
+        text-align: center;
+        margin-top: 7px;
+        color: #666;
+      }
+      .NJ_chart_rank1 {
+        width: 71px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 30px;
+        text-align: center;
+        margin-top: 7px;
+        color: #666;
+      }
+      .NJ_rank_1 {
+        font-size: 10px;
+        color: #666;
+      }
+      .NJ_rank_1_up {
+        font-size: 10px;
+        color: #f64430;
+      }
+      .NJ_rank_1_down {
+        font-size: 10px;
+        color: #47beaa;
+      }
+      .NJ_chart_title {
+        width: 120px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 13px;
+        margin-top: 7px;
+      }
+      .NJ_chart_artist {
+        width: 77px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 13px;
+        margin-top: 7px;
+      }
+      .NJ_chart_title_info2 {
+        display: none;
+      }
+      .NJ_abm_info2 {
+        display: none;
+      }
+      .NJ_chart_ats_btn {
+        position: absolute;
+        right: 10px;
+        top: 20%;
+      }
+      .NJ_chart_ats_btn img {
+        width: 25px;
+        height: 25px;
+      }
+      .NJ_chart_lbtn {
+        font-size: 12px;
+        height: 25px;
+        width: 70px;
+        border: 1px solid #666;
+      }
+      b {
+        font-size: 14px;
+      }
+      /* body2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */
+      .hs_wrap {
+        width: 1008px;
+        height: 380px;
+        /* border: 1px solid black; */
+        margin: 0 auto;
+        margin-top: 50px;
+        font-family: "돋움", Dotum, "맑은 고딕", "Malgun Gothic", "Apple Gothic",
+          sans-serif;
+      }
+
+      .hs_album_wrap {
+        float: left;
+        margin: 5px;
+      }
+
+      .hs_album_top {
+        display: flex;
+        position: relative;
+        height: 30px;
+      }
+
+      .hs_album_top_left {
+        display: flex;
+        margin: auto 0;
+        font-size: 5px;
+        position: relative;
+        left: -1px;
+        font-size: 16px;
+        font-weight: bolder;
+      }
+
+      .hs_album_top_right {
+        height: 30px;
+        display: flex;
+        margin: auto 5px;
+        position: absolute;
+        right: 5px;
+        font-size: 1px;
+        align-items: center;
+      }
+      .hs_album_top_right a {
+        color: black;
+      }
+
+      #hs_all_btn {
+        text-decoration: none;
+      }
+
+      #hs_kor_btn {
+        text-decoration: none;
+      }
+
+      #hs_eng_btn {
+        text-decoration: none;
+      }
+
+      #hs_btn_page_left {
+        padding: 0;
+        width: 18px;
+        height: 19px;
+        font-size: 12px;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+      }
+      #hs_btn_page_right {
+        padding: 0;
+        width: 18px;
+        height: 19px;
+        font-size: 12px;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+      }
+
+      .hs_singer_name_back {
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+        background-color: rgba(136, 127, 127, 0.4);
+        text-align: center;
+      }
+
+      .hs_singer_name {
+        color: white;
+        text-decoration: none;
+        font-size: small;
+      }
+
+      .hs_list_row1 {
+        height: 161px;
+      }
+
+      .hs_album_frame1 {
+        display: inline-block;
+        width: 156px;
+        height: 155px;
+        background-image: url("./imgs/all/img01.jpg");
+        background-size: cover;
+        margin: 0.25px;
+        position: relative;
+      }
+
+      .hs_album_frame2 {
+        display: inline-block;
+        width: 156px;
+        height: 155px;
+        background-image: url("./imgs/all/img02.jpg");
+        background-size: cover;
+        margin: 0.25px;
+        position: relative;
+      }
+
+      .hs_album_frame3 {
+        display: inline-block;
+        width: 156px;
+        height: 155px;
+        background-image: url("./imgs/all/img03.jpg");
+        background-size: cover;
+        margin: 0.25px;
+        position: relative;
+      }
+
+      .hs_album_frame4 {
+        display: inline-block;
+        width: 156px;
+        height: 155px;
+        background-image: url("./imgs/all/img04.jpg");
+        background-size: cover;
+        margin: 0.25px;
+        position: relative;
+      }
+
+      .hs_album_frame5 {
+        display: inline-block;
+        width: 156px;
+        height: 155px;
+        background-image: url("./imgs/all/img05.jpg");
+        background-size: cover;
+        margin: 0.25px;
+        position: relative;
+      }
+
+      .hs_album_frame6 {
+        display: inline-block;
+        width: 156px;
+        height: 155px;
+        background-image: url("./imgs/all/img06.jpg");
+        background-size: cover;
+        margin: 0.25px;
+        position: relative;
+      }
+
+      .hs_hover_content_detail {
+        color: white;
+        transition: 0.5s;
+      }
+
+      #hs_album_frame {
+        position: relative;
+      }
+
+      #hs_album_frame:hover {
+        position: relative;
+      }
+
+      .hs_hover_content {
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        display: none;
+        color: white;
+        font-weight: bold;
+        transform: translate(-50%, -50%);
+      }
+
+      #hs_album_frame:hover .hs_hover_content {
+        display: block;
+      }
+
+      #hs_album_frame:hover .hs_singer_name_back {
+        display: none;
+      }
+
+      .hs_page_num {
+        margin-left: 5px;
+        margin-right: 5px;
+        display: inline-block;
+      }
+
+      .hs_collection_selection {
+        display: block;
+        margin: auto 0;
+      }
+
+      /* 수정 필요 */
+      .hs_top_right_element {
+        float: left;
+        list-style: none;
+      }
+
+      .hs_top_right_element_center {
+        float: left;
+        list-style: none;
+      }
+
+      .hs_event_list {
+        float: left;
+      }
+
+      .hs_id_wrap {
+        float: left;
+        margin: 5px;
+        white-space: nowrap;
+        margin-left: 28px;
+      }
+
+      .hs_button_login {
+        font-size: 5px;
+        text-align: center;
+      }
+
+      .hs_login_btn {
+      }
+
+      .hs_move {
+        display: inline-block;
+        float: right;
+      }
+
+      .hs_move_btn {
+        height: 7px;
+        width: 7px;
+        border-radius: 50%;
+        padding: 0;
+        border: 1px solid black;
+      }
+
+      .hs_move_play_and_stop {
+        height: 7px;
+        width: 7px;
+        border-radius: 50%;
+        padding: 0;
+        border: 1px solid black;
+      }
+
+      .hs_move > span {
+        display: block;
+      }
+
+      .hs_play_and_stop {
+        display: inline-block;
+      }
+
+      .hs_album_frame_right {
+        display: inline-block;
+        width: 280px;
+        height: 190px;
+        background-image: url("https://cdnimg.melon.co.kr/svc/images/main/imgUrl20230712094639.png/melon/quality/80");
+        background-size: 280px 190px;
+        background-repeat: no-repeat;
+        border: 1px solid black;
+      }
+
+      .hs_btn_login {
+        background-color: #00d344;
+        width: 225px;
+        height: 50px;
+        border: none;
+        margin: 5px;
+      }
+      .hs_register_btn {
+        font-size: 14px;
+        color: black;
+        text-decoration: none;
+      }
+      .hs_button_login {
+        border: none;
+        margin-top: 30px;
+      }
+      .hs_login_btn_text_detail {
+        font-size: 16px;
+      }
+
+      .hs_login_btn_text_detail {
+        color: white;
+        text-decoration: none;
+      }
+
+      .hs_top_box {
+        border: 1px solid #e0e0e0;
+        margin: 2px;
+        margin-top: 16px;
+        margin-bottom: 5px;
+        padding: 22px;
+      }
+      .hs_top_box a {
+        font-family: "돋움", Dotum, "맑은 고딕", "Malgun Gothic", "Apple Gothic",
+          sans-serif;
+      }
+
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
+      }
+
+      .swiper {
+        margin-top: 35px;
+        width: 200px;
+        height: 315px;
+      }
+
+      .swiper-slide img {
+        max-width: 100%;
+        height: 350px;
+      }
+
+      .swiper-button-next:after {
+        color: #00d344;
+        opacity: 0.5;
+      }
+      .swiper-button-prev:after {
+        color: #00d344;
+        opacity: 0.5;
+      }
+
+      /* footer  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaafooter */
+      .jw_wrap {
+        width: 100%;
+      }
+
+      .jw_top {
+        width: 1008px;
+
+        margin: 0px auto;
+
+        position: relative;
+      }
+
+      .jw_mid {
+        margin: 0 auto;
+        width: 1008px;
+      }
+
+      .jw_bottom {
+        width: 1008px;
+
+        margin: 0 auto;
+      }
+      .jw_menu1 {
+        width: 400px;
+        padding-left: 0px;
+        display: flex;
+      }
+      .jw_menu1 li {
+        list-style: none;
+        font-size: 12px;
+        margin-left: 15px;
+      }
+      .jw_top_list {
+        display: flex;
+      }
+      .jw_menu2 {
+        list-style: none;
+        display: flex;
+        width: 1000px;
+      }
+      .jw_menu2 li {
+        font-size: 5px;
+      }
+
+      .jw_magin2 {
+        font-size: 12px;
+        margin-right: 30px;
+      }
+      .jw_font1 a {
+        color: #1a1a1a;
+        font-weight: bold;
+      }
+      .jw_font2 a {
+        color: #8a8a8a;
+      }
+      .jw_font2 a:hover {
+        text-decoration: underline;
+      }
+      .jw_a {
+        text-decoration: none;
+      }
+      .jw_menu3 {
+        list-style: none;
+      }
+      .jw_magin {
+        color: #666666;
+      }
+      .jw_magin2 span {
+        color: #979696;
+        font-size: 14px;
+        font-weight: bold;
+      }
+      .jw_magin2 span:hover {
+        color: #1a1a1a;
+      }
+      .jw_menu3 {
+        display: flex;
+        position: relative;
+        left: -22px;
+      }
+      .jw_first_child {
+        margin-right: 20px;
+        position: relative;
+      }
+      .jw_first_child a {
+        font-size: 12px;
+        color: #505050;
+      }
+      .jw_first_child a:hover {
+        text-decoration: underline;
+      }
+      .jw_bottom span {
+        font-size: 11px;
+        color: #909090;
+      }
+      .jw_bottom span a {
+        font-size: 11px;
+        color: #909090;
+      }
+      .jw_bottom {
+        position: relative;
+        left: 17px;
+        margin-bottom: 50px;
+      }
+      .jw_hr {
+        background-color: #efefef;
+        border: 0px;
+        height: 1px;
+      }
+      .jw_img {
+        width: 20px;
+        height: 14px;
+      }
+    </style>
+    <script>
+      window.addEventListener("load", function () {
+        let all_imgs = [
+          "imgs/all/img01.jpg",
+          "imgs/all/img02.jpg",
+          "imgs/all/img03.jpg",
+          "imgs/all/img04.jpg",
+          "imgs/all/img05.jpg",
+          "imgs/all/img06.jpg",
+        ];
+        let kor_imgs = [
+          "imgs/kor/img01.jpg",
+          "imgs/kor/img02.jpg",
+          "imgs/kor/img03.jpg",
+          "imgs/kor/img04.jpg",
+          "imgs/kor/img05.jpg",
+          "imgs/kor/img06.jpg",
+        ];
+        let eng_imgs = [
+          "imgs/eng/img01.jpg",
+          "imgs/eng/img02.jpg",
+          "imgs/eng/img03.jpg",
+          "imgs/eng/img04.jpg",
+          "imgs/eng/img05.jpg",
+          "imgs/eng/img06.jpg",
+        ];
+
+        let all_name = [
+          "네이비쿼카",
+          "다이나믹듀오",
+          "도쿄리벤저스",
+          "YOASOBI",
+          "YOASOBI",
+          "imase",
+        ];
+        let kor_name = ["BTS", "BTS", "PSY", "BoA", "BoA", "BE"];
+        let eng_name = ["POP", "Bruno Mars", "Sam", "Sam", "Metal", "Boob"];
+
+        let all_title_detail = [
+          "Summer Dance",
+          "죽일 놈 (Guilty)",
+          "Cry Baby",
+          "Into The Night",
+          "Just a Little Step",
+          "NIGHT DANCER",
+        ];
+        let kor_title_detail = [
+          "Butter",
+          "Dynamite",
+          "Gangnam Style",
+          "Only One",
+          "Only One",
+          "BE",
+        ];
+        let eng_title_detail = [
+          "Pop",
+          "Bruno Mars",
+          "I'm Not The Only One",
+          "Unholy",
+          "Rock",
+          "Boob",
+        ];
+
+        let page_num_flag = 0;
+
+        let all_btn = this.document.querySelector("#hs_all_btn");
+        all_btn.addEventListener("click", all_img);
+
+        let kor_btn = this.document.querySelector("#hs_kor_btn");
+        kor_btn.addEventListener("click", kor_img);
+
+        let eng_btn = this.document.querySelector("#hs_eng_btn");
+        eng_btn.addEventListener("click", eng_img);
+
+        let right_btn = this.document.querySelector("#hs_btn_page_right");
+        right_btn.addEventListener("click", right_go);
+
+        let left_btn = this.document.querySelector("#hs_btn_page_left");
+        left_btn.addEventListener("click", left_go);
+
+        function right_go() {
+          if (page_num_flag == 0) {
+            kor_img();
+            page_num_flag++;
+          } else if (page_num_flag == 1) {
+            eng_img();
+            page_num_flag++;
+          }
+        }
+
+        function left_go() {
+          if (page_num_flag == 2) {
+            kor_img();
+            page_num_flag--;
+          } else if (page_num_flag == 1) {
+            all_img();
+            page_num_flag--;
+          }
+        }
+
+        function all_img() {
+          for (let i = 0; i < all_imgs.length; i++) {
+            let img = document.querySelector(".hs_album_frame" + (i + 1));
+            img.style.backgroundImage = "url('" + all_imgs[i] + "')";
+          }
+          let page_num_element = document.querySelector(".hs_page_num");
+          page_num_element.innerHTML = "1/3";
+          write_all_name();
+          write_all_detail();
+        }
+
+        function kor_img() {
+          for (let i = 0; i < kor_imgs.length; i++) {
+            let img = document.querySelector(".hs_album_frame" + (i + 1));
+            img.style.backgroundImage = "url('" + kor_imgs[i] + "')";
+          }
+          let page_num_element = document.querySelector(".hs_page_num");
+          page_num_element.innerHTML = "2/3";
+          write_kor_name();
+          write_kor_detail();
+        }
+
+        function eng_img() {
+          for (let i = 0; i < eng_imgs.length; i++) {
+            let img = document.querySelector(".hs_album_frame" + (i + 1));
+            img.style.backgroundImage = "url('" + eng_imgs[i] + "')";
+          }
+          let page_num_element = document.querySelector(".hs_page_num");
+          page_num_element.innerHTML = "3/3";
+          write_eng_name();
+          write_eng_detail();
+        }
+
+        function write_all_detail() {
+          let detail_arr = document.getElementsByClassName(
+            "hs_hover_content_detail"
+          );
+          for (i = 0; i < detail_arr.length; i++) {
+            detail_arr[i].innerText = all_title_detail[i];
+          }
+        }
+
+        function write_kor_detail() {
+          let detail_arr = document.getElementsByClassName(
+            "hs_hover_content_detail"
+          );
+          for (i = 0; i < detail_arr.length; i++) {
+            detail_arr[i].innerText = kor_title_detail[i];
+          }
+        }
+
+        function write_eng_detail() {
+          let detail_arr = document.getElementsByClassName(
+            "hs_hover_content_detail"
+          );
+          for (i = 0; i < detail_arr.length; i++) {
+            detail_arr[i].innerText = eng_title_detail[i];
+          }
+        }
+
+        function write_all_name() {
+          let name_arr = document.getElementsByClassName("hs_singer_name");
+          for (i = 0; i < name_arr.length; i++) {
+            name_arr[i].innerText = all_name[i];
+          }
+        }
+
+        function write_kor_name() {
+          let name_arr = document.getElementsByClassName("hs_singer_name");
+          for (i = 0; i < name_arr.length; i++) {
+            name_arr[i].innerText = kor_name[i];
+          }
+        }
+
+        function write_eng_name() {
+          let name_arr = document.getElementsByClassName("hs_singer_name");
+          for (i = 0; i < name_arr.length; i++) {
+            name_arr[i].innerText = eng_name[i];
+          }
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <div class="jy_total">
+      <div class="jy_popup-container">
+        <div class="jy_popup-content">
+          <ul class="jy_popup-ticket">
+            <li class="jy_popup-logo1" title="상품 프로모션">
+              <a href="https://www.melon.com/buy/pamphlet/recommend.htm">
+                <img
+                  src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20230703101526.png/melon/quality/80"
+                  alt="popup-logo1"
+                  class="jy_popup-logo1"
+                />
+              </a>
+            </li>
+            <li class="jy_popup-logo2" title="Cosm 콘서트">
+              <a
+                href="https://ticket.melon.com/performance/index.htm?prodId=208418"
+              >
+                <img
+                  src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20230703101536.png/melon/quality/80"
+                  alt="popup-logo2"
+                  class="jy_popup-logo2"
+                />
+              </a>
+            </li>
+          </ul>
+          <div class="jy_popup-bottom">
+            <input
+              class="jy_popup-checkbox"
+              type="checkbox"
+              id="popup-checkbox"
+            />
+
+            <label for="popup-checkbox">오늘 하루 이창을 열지 않음</label>
+
+            <button class="jy_popup-close">닫기</button>
+          </div>
+        </div>
+      </div>
+      <div class="jy_header">
+        <div class="jy_ticket">
+          <a href="https://ticket.melon.com/main/index.htm" title="멜론티켓">
+            멜론티켓</a
+          >
+        </div>
+        <div class="jy_nav">
+          <ul>
+            <li>
+              <a
+                href="https://www.melon.com/commerce/pamphlet/web/sale_listMainView.htm"
+                title="이용권구매"
+              >
+                <img
+                  src="./icons8-film-soundtracks-25.png"
+                  style="width: 20px; height: 15px; margin-bottom: -3px"
+                />이용권구매</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.melon.com/event/vip/index.htm"
+                title="멜론라운지"
+                >멜론라운지</a
+              >
+            </li>
+
+            <li>
+              <a href="https://www.melon.com/event/index.htm" title="이벤트"
+                >이벤트</a
+              >
+            </li>
+
+            <li>
+              <a
+                href="https://www.melon.com/customer/announce/index.htm"
+                title="공지사항"
+                >공지사항</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- 착시선 -->
+      <div class="line w0_2" role="presentation"></div>
+
+      <div class="jy_body">
+        <!-- 로고 이미지 -->
+        <div class="jy_logo" title="MelOn 로고 - 홈으로 이동">
+          <a href="./melonmain.html">
+            <img
+              src="https://cdnimg.melon.co.kr/resource/image/web/common/logo_melon142x99.png"
+              alt="Logo"
+              class="jy_logo"
+            />
+          </a>
+        </div>
+        <!-- 검색바 -->
+        <div class="jy_searchwrapper">
+          <input
+            type="text"
+            alt="검색 입력 편집창"
+            placeholder="[멜론어학]함께 즐기며 배우는 외국어 강좌"
+          />
+          <a href="">
+            <img
+              src="./m_제목 없음.png"
+              onclick="alert('찾을 수 없습니다.')"
+              alt=""
+              class="jy_searchimg"
+              style="width: 28px; height: 28px"
+            />
+          </a>
+        </div>
+        <button class="rollingBtn">급상승</button>
+
+        <div class="rollingbanner">
+          <div class="wrap">
+            <ul class="innerwrap">
+              <li class="current">1. (여자)아이들</li>
+              <li class="next">2. BLACKPINK</li>
+              <li>3. 랄랄</li>
+              <li>4. 화사 (Hwa Sa)</li>
+              <li>5. 세븐틴</li>
+              <li>6. 마마무(MamaMoo)</li>
+              <li>7. 잔나비</li>
+              <li>8. 쿨 (COOL)</li>
+              <li>9. YENA (최예나)</li>
+              <li class="prev">10. 헤이즈 (Heize)</li>
+            </ul>
+          </div>
+        </div>
+        <ul class="menu">
+          <li class="menu-item">
+            <ul class="sub-menu">
+              <li>
+                <a
+                  href="https://www.melon.com/search/total/index.htm?q=%28%EC%97%AC%EC%9E%90%29%EC%95%84%EC%9D%B4%EB%93%A4&section="
+                  >1. (여자)아이들</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.melon.com/artist/timeline.htm?artistId=995169"
+                  >2. BLACKPINK</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.melon.com/search/total/index.htm?q=%EB%9E%84%EB%9E%84&section=&mwkLogType=T"
+                  >3. 랄랄</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.melon.com/search/total/index.htm?q=%ED%99%94%EC%82%AC&section=&searchGnbYn=Y&kkoSpl=Y&kkoDpType=&mwkLogType=T"
+                  >4. 화사 (Hwa Sa)</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.melon.com/search/total/index.htm?q=%EC%84%B8%EB%B8%90%ED%8B%B4+%28SEVENTEEN%29&section="
+                  >5. 세븐틴 (SEVENTEEN)</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.melon.com/search/total/index.htm?q=%EB%A7%88%EB%A7%88%EB%AC%B4&section=&searchGnbYn=Y&kkoSpl=Y&kkoDpType=&mwkLogType=T"
+                  >6. 마마무(MamaMoo)</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.melon.com/search/total/index.htm?q=%EC%9E%94%EB%82%98%EB%B9%84&section=&searchGnbYn=Y&kkoSpl=Y&kkoDpType=&mwkLogType=T"
+                  >7. 잔나비</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.melon.com/search/total/index.htm?q=2ne1&section=&searchGnbYn=Y&kkoSpl=Y&kkoDpType=&mwkLogType=T"
+                  >8. 쿨 (COOL)</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.melon.com/search/total/index.htm?q=%EC%B5%9C%EC%98%88%EB%82%98&section=&searchGnbYn=Y&kkoSpl=Y&kkoDpType=&mwkLogType=T"
+                  >9. YENA (최예나)</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.melon.com/search/total/index.htm?q=%ED%97%A4%EC%9D%B4%EC%A6%88&section=&searchGnbYn=Y&kkoSpl=Y&kkoDpType=&mwkLogType=T"
+                  >10. 헤이즈 (Heize)</a
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <!-- 급상승 롤링 -->
+      <!-- <div class="container"> -->
+
+      <!-- </div> -->
+      <div class="jy_footer">
+        <!-- 아래 배너 -->
+        <ul>
+          <li><a href="https://www.melon.com/chart/index.htm">멜론차트</a></li>
+          <li><a href="https://www.melon.com/new/index.htm">최신음악</a></li>
+          <li>
+            <a href="https://www.melon.com/genre/song_list.htm?gnrCode=GN0100"
+              >장르음악</a
+            >
+          </li>
+          <li>
+            <a href="https://www.melon.com/dj/today/djtoday_list.htm">멜론DJ</a>
+          </li>
+          <li><a href="https://www.melon.com/tv/index.htm">멜론TV</a></li>
+          <li>
+            <a href="https://www.melon.com/artistplus/todayupdate/index.htm"
+              >스타포스트</a
+            >
+          </li>
+          <li>
+            <a href="https://www.melon.com/musicstory/today/index.htm"
+              >매거진</a
+            >
+          </li>
+          <li>
+            <a href="https://www.melon.com/melonaward/weekAward.htm"
+              >뮤직어워드</a
+            >
+          </li>
+          <li><a href="https://www.melon.com/edu/index.htm">어학</a></li>
+          <!-- 어학파트에 로그인 페이지 넣어야됨 -->
+        </ul>
+        <!-- 로그인 페이지 넣어야됨 마이뮤직 -->
+        <div class="jy_mymusic"><a href="./지원login.html"> 마이뮤직</a></div>
+      </div>
+      <hr />
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const popupContainer = document.querySelector(".jy_popup-container");
+        const popupClose = document.querySelector(".jy_popup-close");
+
+        popupClose.addEventListener("click", function () {
+          popupContainer.style.display = "none";
+          popupClose.removeEventListener("click", closePopup);
+        });
+      });
+    </script>
+    <!-- body1 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -->
+    <div class="hs_wrap">
+      <div class="hs_album_wrap">
+        <div class="hs_album_top">
+          <div class="hs_album_top_left">최신앨범></div>
+
+          <div class="hs_album_top_right">
+            <div class="hs_collection_selection">
+              <ul>
+                <li class="hs_top_right_element">
+                  <a href="#" id="hs_all_btn">전체 &nbsp;&#124;</a>
+                </li>
+                <li class="hs_top_right_element_center">
+                  <a href="#" id="hs_kor_btn">&nbsp;국내&nbsp;&#124;</a>
+                </li>
+                <li class="hs_top_right_element">
+                  <a href="#" id="hs_eng_btn">&nbsp;해외</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="hs_page_num">1/3</div>
+
+            <div
+              class="btn-group"
+              role="group"
+              aria-label="Basic mixed styles example"
+            >
+              <button
+                type="button"
+                class="btn btn-outline-success"
+                id="hs_btn_page_left"
+              >
+                <
+              </button>
+              <button
+                type="button"
+                class="btn btn-outline-success"
+                id="hs_btn_page_right"
+              >
+                >
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="hs_list_wrap">
+          <div class="hs_list_row1">
+            <div class="hs_album_frame1" id="hs_album_frame">
+              <div class="hs_hover_content">
+                <a
+                  class="hs_hover_content_detail"
+                  href="./멜론앨범세부페이지.html"
+                  >Summer Dance</a
+                >
+              </div>
+              <div class="hs_singer_name_back">
+                <a href="./멜론앨범세부페이지.html" class="hs_singer_name"
+                  >네이버쿼카</a
+                >
+              </div>
+            </div>
+            <div class="hs_album_frame2" id="hs_album_frame">
+              <div class="hs_hover_content">
+                <a class="hs_hover_content_detail" href="#">죽일 놈 (Guilty)</a>
+              </div>
+              <div class="hs_singer_name_back">
+                <a href="#" class="hs_singer_name">다이나믹듀오</a>
+              </div>
+            </div>
+            <div class="hs_album_frame3" id="hs_album_frame">
+              <div class="hs_hover_content">
+                <a class="hs_hover_content_detail" href="#">Cry Baby</a>
+              </div>
+              <div class="hs_singer_name_back">
+                <a href="#" class="hs_singer_name">도쿄리벤저스</a>
+              </div>
+            </div>
+          </div>
+          <div class="hs_list_row2">
+            <div class="hs_album_frame4" id="hs_album_frame">
+              <div class="hs_hover_content">
+                <a class="hs_hover_content_detail" href="#">Into The Night</a>
+              </div>
+              <div class="hs_singer_name_back">
+                <a href="#" class="hs_singer_name">YOASOBI</a>
+              </div>
+            </div>
+            <div class="hs_album_frame5" id="hs_album_frame">
+              <div class="hs_hover_content">
+                <a class="hs_hover_content_detail" href="#"
+                  >Just a Little Step</a
+                >
+              </div>
+              <div class="hs_singer_name_back">
+                <a href="#" class="hs_singer_name">YOASOBI</a>
+              </div>
+            </div>
+            <div class="hs_album_frame6" id="hs_album_frame">
+              <div class="hs_hover_content">
+                <a class="hs_hover_content_detail" href="#">NIGHT DANCER</a>
+              </div>
+              <div class="hs_singer_name_back">
+                <a href="#" class="hs_singer_name">IMASE</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hs_event_list">
+        <div class="hs_play_control">
+          <div class="hs_move_box">
+            <div class="hs_move"></div>
+          </div>
+          <div class="swiper">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+              <!-- Slides -->
+              <div class="swiper-slide"><img src="./imgs/big/img01.jpg" /></div>
+              <div class="swiper-slide"><img src="./imgs/big/img02.jpg" /></div>
+              <div class="swiper-slide"><img src="./imgs/big/img03.jpg" /></div>
+              <div class="swiper-slide"><img src="./imgs/big/img04.jpg" /></div>
+              <div class="swiper-slide"><img src="./imgs/big/img05.jpg" /></div>
+              <div class="swiper-slide"><img src="./imgs/big/img06.jpg" /></div>
+              <div class="swiper-slide"><img src="./imgs/big/img07.jpg" /></div>
+            </div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+
+            <!-- If we need scrollbar -->
+            <div class="swiper-scrollbar"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hs_id_wrap">
+        <div class="hs_button_login">
+          <div class="hs_top_box">
+            <div class="hs_top_area">
+              <span>멜론을 더 안전하게 이용하세요.</span>
+              <a href="./회원가입.html" class="hs_register_btn">회원가입</a>
+            </div>
+
+            <button class="hs_btn_login">
+              <span class="hs_btn_login_text"
+                ><a href="./지원login.html" class="hs_login_btn_text_detail"
+                  >로그인</a
+                ></span
+              >
+            </button>
+          </div>
+          <div class="hs_album_frame_right"></div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const swiper = new Swiper(".swiper", {
+        // Optional parameters
+        direction: "horizontal",
+        loop: true,
+
+        // If we need pagination
+        pagination: {},
+
+        // Navigation arrows
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+
+        // And if we need scrollbar
+        scrollbar: {
+          el: ".swiper-scrollbar",
+        },
+      });
+    </script>
+    <!--C 파트의 전체-->
+    <div class="NJ_wrap">
+      <!--인기있어요-->
+      <div class="NJ_wrap1">
+        <div class="NJ_info_header">
+          <h2 class="NJ_txt_title">
+            인기 있어요
+            <span class="NJ_txt_ats">
+              지금 이슈가 되는 아티스트의 인기 컨텐츠입니다.
+            </span>
+          </h2>
+          <div class="NJ_info_btn">
+            <span id="NJ_first_no"><strong>1</strong>/2</span>
+            <button class="NJ_info_btn_left" onclick="change_wrap()">
+              <span id="NJ_left_btn"> < </span>
+            </button>
+            <button class="NJ_info_btn_right" onclick="change_wrap2()">
+              <span id="NJ_right_btn"> > </span>
+            </button>
+          </div>
+        </div>
+
+        <div class="NJ_info">
+          <div class="NJ_item" id="NJ_item_wrap_left">
+            <a
+              href="https://www.melon.com/video/detail2.htm?mvId=50262530&menuId=10010101"
+            >
+              <img
+                class="NJ_Artists_img"
+                src="https://cdnimg.melon.co.kr/cm2/mv/images/wide/502/62/530/50262530_20230623105709_640.jpg/melon/resize/480/quality/80/optimize"
+              />
+              <p class="NJ_music_title">19</p>
+              <p class="NJ_music_artist">다이나믹 듀오</p>
+            </a>
+            <a href="https://www.melon.com/tv/index.htm">
+              <p class="NJ_tv_txt">멜론TV</p>
+            </a>
+          </div>
+          <div class="NJ_item">
+            <a
+              href="https://www.melon.com/video/detail2.htm?mvId=50262599&menuId=10010101"
+            >
+              <img
+                class="NJ_Artists_img"
+                src="https://cdnimg.melon.co.kr/cm2/mv/images/wide/502/62/599/50262599_20230626174710_640.jpg/melon/resize/480/quality/80/optimize"
+              />
+              <p class="NJ_music_title">HARD</p>
+              <p class="NJ_music_artist">SHINee (샤이니)</p>
+            </a>
+            <a href="https://www.melon.com/tv/index.htm">
+              <p class="NJ_tv_txt">멜론TV</p>
+            </a>
+          </div>
+          <div class="NJ_item">
+            <a
+              href="https://www.melon.com/video/detail2.htm?mvId=50262632&menuId=10010101"
+            >
+              <img
+                class="NJ_Artists_img"
+                src="https://cdnimg.melon.co.kr/cm2/mv/images/wide/502/62/632/50262632_20230630151854_640.jpg/melon/resize/480/quality/80/optimize"
+              />
+              <p class="NJ_music_title">
+                Hate Rodrigo (Feat. 우기 ((여자)아이들))
+              </p>
+              <p class="NJ_music_artist">YENA (최예나)</p>
+            </a>
+            <a href="https://www.melon.com/tv/index.htm">
+              <p class="NJ_tv_txt">멜론TV</p>
+            </a>
+          </div>
+          <div class="NJ_item" id="NJ_item_wrap_left">
+            <a
+              href="https://www.melon.com/video/detail2.htm?mvId=50262658&menuId=26020101"
+            >
+              <img
+                class="NJ_Artists_img"
+                src="https://cdnimg.melon.co.kr/cm2/mv/images/wide/502/62/658/50262658_20230628181036_640.jpg/melon/resize/480/quality/80/optimize"
+              />
+              <p class="NJ_music_title">MOVE (T5)</p>
+              <p class="NJ_music_artist">TREASURE (트레저)</p>
+            </a>
+            <a href="https://www.melon.com/tv/index.htm">
+              <p class="NJ_tv_txt">멜론TV</p>
+            </a>
+          </div>
+          <div class="NJ_item">
+            <a
+              href="https://www.melon.com/video/detail2.htm?mvId=50262586&menuId=10010101"
+            >
+              <img
+                class="NJ_Artists_img"
+                src="https://cdnimg.melon.co.kr/cm2/mv/images/wide/502/62/586/50262586_20230626151601_640.jpg/melon/resize/480/quality/80/optimize"
+              />
+              <p class="NJ_music_title">Dive Into</p>
+              <p class="NJ_music_artist">한승우</p>
+            </a>
+            <a href="https://www.melon.com/tv/index.htm">
+              <p class="NJ_tv_txt">멜론TV</p>
+            </a>
+          </div>
+          <div class="NJ_item">
+            <a
+              href="https://www.melon.com/video/detail2.htm?mvId=50262797&menuId=29010101"
+            >
+              <img
+                class="NJ_Artists_img"
+                src="https://cdnimg.melon.co.kr/cm2/mv/images/wide/502/62/797/50262797_20230703164714_640.jpg/melon/resize/480/quality/80/optimize"
+              />
+              <p class="NJ_music_title">Roller Coaster</p>
+              <p class="NJ_music_artist">NMIXX</p>
+            </a>
+            <a href="https://www.melon.com/tv/index.htm">
+              <p class="NJ_tv_txt">멜론TV</p>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!--멜론차트-->
+      <div class="NJ_chart_wrap">
+        <!--상단 부분(멜론 차트> 와 시간)-->
+        <div class="NJ_chart_header">
+          <div class="NJ_chart_chart">
+            <a href="#">멜론 차트> </a>
+          </div>
+          <div class="NJ_chart_time" id="NJ_time">
+            <p>2023.07.06 <strong>09:00</strong>기준</p>
+          </div>
+        </div>
+        <!--TOP100 POP 아티스트 버튼-->
+        <div class="NJ_chart_btn">
+          <button
+            class="NJ_chart_btn_top"
+            id="NJ_btn_top"
+            onclick="changeTop100()"
+          >
+            <b>TOP100</b>
+          </button>
+          <button
+            class="NJ_chart_btn_pop"
+            id="NJ_btn_pop"
+            onclick="changePop()"
+          >
+            <b>POP</b>
+          </button>
+          <button
+            class="NJ_chart_btn_ats"
+            id="NJ_btn_ats"
+            onclick="changeArtist()"
+          >
+            <b>☆아티스트</b>
+          </button>
+        </div>
+        <!--TOP100차트부분-->
+        <div class="NJ_chart_top_all">
+          <!--1위-->
+          <div
+            class="NJ_chart_list1"
+            onmouseover="NJ_change_chart_high(this)"
+            onmouseout="NJ_change_chart_out_high(this)"
+          >
+            <!--순위-->
+            <div class="NJ_chart_rank1_high">
+              1<span class="NJ_rank_1"> - 0</span>
+            </div>
+
+            <div class="NJ_chart_title_info2">
+              <!--노래 제목-->
+              <div class="NJ_chart_title">퀸카 (Queencard)</div>
+              <!--아티스트명-->
+              <div class="NJ_chart_artist">(여자)아이들</div>
+            </div>
+            <div class="NJ_abm_info">
+              <div class="NJ_ab_img">
+                <img
+                  src="https://cdnimg.melon.co.kr/cm2/album/images/112/40/232/11240232_20230509151820_500.jpg/melon/quality/80/resize/48/optimize"
+                />
+              </div>
+              <div class="NJ_ab_title">
+                <p><strong>퀸카 (Queencard)</strong><br />(여자)아이들</p>
+              </div>
+            </div>
+          </div>
+          <span></span>
+          <!--2위-->
+
+          <div
+            class="NJ_chart_list"
+            onmouseover="NJ_change_chart_high(this)"
+            onmouseout="NJ_change_chart_out_high(this)"
+          >
+            <div class="NJ_chart_rank_high">
+              2<span class="NJ_rank_1"> - 0</span>
+            </div>
+            <div class="NJ_chart_title_info">
+              <div class="NJ_chart_title">I AM</div>
+              <div class="NJ_chart_artist">IVE (아이브)</div>
+            </div>
+            <div class="NJ_abm_info2">
+              <div class="NJ_ab_img">
+                <img
+                  src="https://cdnimg.melon.co.kr/cm2/album/images/112/11/297/11211297_20230410151046_500.jpg/melon/quality/80/resize/48/optimize"
+                />
+              </div>
+              <div class="NJ_ab_title">
+                <p><strong>I AM</strong><br />IVE (아이브)</p>
+              </div>
+            </div>
+          </div>
+          <!--3위-->
+          <div
+            class="NJ_chart_list"
+            onmouseover="NJ_change_chart_high(this)"
+            onmouseout="NJ_change_chart_out_high(this)"
+          >
+            <div class="NJ_chart_rank_high">
+              3<span class="NJ_rank_1"> - 0</span>
+            </div>
+            <div class="NJ_chart_title_info">
+              <div class="NJ_chart_title">
+                이브,프시케 그리고 푸른 수염의 아내
+              </div>
+              <div class="NJ_chart_artist">LE SSERAFIM(르세라핌)</div>
+            </div>
+            <div class="NJ_abm_info2">
+              <div class="NJ_ab_img">
+                <img
+                  src="https://cdnimg.melon.co.kr/cm2/album/images/112/34/678/11234678_20230502162327_500.jpg/melon/quality/80/resize/48/optimize"
+                />
+              </div>
+              <div class="NJ_ab_title">
+                <p>
+                  <strong>이브,프시케 그리고 푸른 수염의 아내</strong><br />LE
+                  SSERAFIM(르세라핌)
+                </p>
+              </div>
+            </div>
+          </div>
+          <!--4위-->
+          <div
+            class="NJ_chart_list"
+            onmouseover="NJ_change_chart(this)"
+            onmouseout="NJ_change_chart_out(this)"
+          >
+            <div class="NJ_chart_rank">
+              4<span class="NJ_rank_1"> - 0</span>
+            </div>
+            <div class="NJ_chart_title_info">
+              <div class="NJ_chart_title">Spicy</div>
+              <div class="NJ_chart_artist">aespa</div>
+            </div>
+            <div class="NJ_abm_info2">
+              <div class="NJ_ab_img">
+                <img
+                  src="https://cdnimg.melon.co.kr/cm2/album/images/112/36/264/11236264_20230508184331_500.jpg/melon/quality/80/resize/48/optimize"
+                />
+              </div>
+              <div class="NJ_ab_title">
+                <p><strong>Spicy</strong><br />aespa</p>
+              </div>
+            </div>
+          </div>
+          <!--5위-->
+          <div
+            class="NJ_chart_list"
+            onmouseover="NJ_change_chart(this)"
+            onmouseout="NJ_change_chart_out(this)"
+          >
+            <div class="NJ_chart_rank">
+              5<span class="NJ_rank_1"> - 0</span>
+            </div>
+            <div class="NJ_chart_title_info">
+              <div class="NJ_chart_title">UNFORGIVEN(feat. Nile Rodgers)</div>
+              <div class="NJ_chart_artist">LE SSERAFIM(르세라핌)</div>
+            </div>
+            <div class="NJ_abm_info2">
+              <div class="NJ_ab_img">
+                <img
+                  src="https://cdnimg.melon.co.kr/cm2/album/images/112/34/678/11234678_20230502162327_500.jpg/melon/quality/80/resize/48/optimize"
+                />
+              </div>
+              <div class="NJ_ab_title">
+                <p>
+                  <strong>UNFORGIVEN(feat. Nile Rodgers)</strong><br />LE
+                  SSERAFIM(르세라핌)
+                </p>
+              </div>
+            </div>
+          </div>
+          <!--6위-->
+          <div
+            class="NJ_chart_list"
+            onmouseover="NJ_change_chart(this)"
+            onmouseout="NJ_change_chart_out(this)"
+          >
+            <div class="NJ_chart_rank">
+              6<span class="NJ_rank_1"> - 0</span>
+            </div>
+            <div class="NJ_chart_title_info">
+              <div class="NJ_chart_title">헤어지자 말해요</div>
+              <div class="NJ_chart_artist">박재정</div>
+            </div>
+            <div class="NJ_abm_info2">
+              <div class="NJ_ab_img">
+                <img
+                  src="https://cdnimg.melon.co.kr/cm2/album/images/112/27/533/11227533_20230419162238_500.jpg/melon/quality/80/resize/48/optimize"
+                />
+              </div>
+              <div class="NJ_ab_title">
+                <p><strong>헤어지자 말해요</strong><br />박재정</p>
+              </div>
+            </div>
+          </div>
+          <!--7위-->
+          <div
+            class="NJ_chart_list"
+            onmouseover="NJ_change_chart(this)"
+            onmouseout="NJ_change_chart_out(this)"
+          >
+            <div class="NJ_chart_rank">
+              7<span class="NJ_rank_1"> - 0</span>
+            </div>
+            <div class="NJ_chart_title_info">
+              <div class="NJ_chart_title">Kitsch</div>
+              <div class="NJ_chart_artist">IVE (아이브)</div>
+            </div>
+            <div class="NJ_abm_info2">
+              <div class="NJ_ab_img">
+                <img
+                  src="https://cdnimg.melon.co.kr/cm2/album/images/112/11/297/11211297_20230410151046_500.jpg/melon/quality/80/resize/48/optimize"
+                />
+              </div>
+              <div class="NJ_ab_title">
+                <p><strong>Kitsch</strong><br />IVE (아이브)</p>
+              </div>
+            </div>
+          </div>
+          <!--8위-->
+          <div
+            class="NJ_chart_list"
+            onmouseover="NJ_change_chart(this)"
+            onmouseout="NJ_change_chart_out(this)"
+          >
+            <div class="NJ_chart_rank">
+              8<span class="NJ_rank_1"> - 0</span>
+            </div>
+            <div class="NJ_chart_title_info">
+              <div class="NJ_chart_title">사랑은 늘 도망가</div>
+              <div class="NJ_chart_artist">임영웅</div>
+            </div>
+            <div class="NJ_abm_info2">
+              <div class="NJ_ab_img">
+                <img
+                  src="https://cdnimg.melon.co.kr/cm2/album/images/107/35/654/10735654_20211008114339_500.jpg/melon/quality/80/resize/48/optimize"
+                />
+              </div>
+              <div class="NJ_ab_title">
+                <p><strong>사랑은 늘 도망가</strong><br />임영웅</p>
+              </div>
+            </div>
+          </div>
+          <!--9위-->
+          <div
+            class="NJ_chart_list"
+            onmouseover="NJ_change_chart(this)"
+            onmouseout="NJ_change_chart_out(this)"
+          >
+            <div class="NJ_chart_rank">
+              9<span class="NJ_rank_1_up"> ▲2</span>
+            </div>
+            <div class="NJ_chart_title_info">
+              <div class="NJ_chart_title">Hype boy</div>
+              <div class="NJ_chart_artist">NewJeans</div>
+            </div>
+            <div class="NJ_abm_info2">
+              <div class="NJ_ab_img">
+                <img
+                  src="https://cdnimg.melon.co.kr/cm2/album/images/110/11/565/11011565_20220801102637_500.jpg/melon/quality/80/resize/48/optimize"
+                />
+              </div>
+              <div class="NJ_ab_title">
+                <p><strong>Hype boy</strong><br />NewJeans</p>
+              </div>
+            </div>
+          </div>
+          <!--10위-->
+          <div
+            class="NJ_chart_list"
+            onmouseover="NJ_change_chart(this)"
+            onmouseout="NJ_change_chart_out(this)"
+          >
+            <div class="NJ_chart_rank">
+              10<span class="NJ_rank_1_down"> ▼1</span>
+            </div>
+            <div class="NJ_chart_title_info">
+              <div class="NJ_chart_title">모래 알갱이</div>
+              <div class="NJ_chart_artist">임영웅</div>
+            </div>
+            <div class="NJ_abm_info2">
+              <div class="NJ_ab_img">
+                <img
+                  src="https://cdnimg.melon.co.kr/cm2/album/images/112/58/233/11258233_20230605094802_500.jpg/melon/quality/80/resize/48/optimize"
+                />
+              </div>
+              <div class="NJ_ab_title">
+                <p><strong>모래 알갱이</strong><br />임영웅</p>
+              </div>
+            </div>
+          </div>
+          <div class="NJ_chart_list">
+            <div class="NJ_chart_footer">
+              <div class="NJ_chart_footer_btn">
+                <button class="NJ_chart_lbtn">셔플듣기</button>
+              </div>
+              <div class="NJ_chart_footer_a">
+                <a href="#">더보기></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--POP차트부분-->
+        <div class="NJ_chart_pop_all">
+          <!--1위-->
+          <div
+            class="NJ_chart_list1"
+            onmouseover="NJ_change_chart_high(this)"
+            onmouseout="NJ_change_chart_out_high(this)"
+          >
+            <!--순위-->
+            <div class="NJ_chart_rank1_high">
+              1<span class="NJ_rank_1"> - 0</span>
+            </div>
+            <div class="NJ_chart_title_info2">
+              <!--노래 제목-->
+              <div class="NJ_chart_title">I Don't Think I Like Her</div>
+              <!--아티스트명-->
+              <div class="NJ_chart_artist">Charlie Puth</div>
+            </div>
+            <div class="NJ_abm_info">
+              <div class="NJ_ab_img">
+                <img
+                  src="https://cdnimg.melon.co.kr/cm2/album/images/108/44/485/10844485_20221006154824_500.jpg/melon/quality/80/resize/48/optimize"
+                />
+              </div>
+              <div class="NJ_ab_title">
+                <p>
+                  <strong>I Don't Think I Like Her</strong><br />Charlie Puth
+                </p>
+              </div>
+            </div>
+          </div>
+          <span></span>
+          <!--2위-->
+
+          <div
+            class="NJ_chart_list"
+            onmouseover="NJ_change_chart_high(this)"
+            onmouseout="NJ_change_chart_out_high(this)"
+          >
+            <div class="NJ_chart_rank_high">
+              2<span class="NJ_rank_1"> - 0</span>
+            </div>
+            <div class="NJ_chart_title_info">
+              <div class="NJ_chart_title">Dangerously</div>
+              <div class="NJ_chart_artist">Charlie Puth</div>
+            </div>
+            <div class="NJ_abm_info2">
+              <div class="NJ_ab_img">
+                <img
+                  src="https://cdnimg.melon.co.kr/cm/album/images/023/36/926/2336926_500.jpg/melon/quality/80/resize/48/optimize"
+                />
+              </div>
+              <div class="NJ_ab_title">
+                <p><strong>Dangerously</strong><br />Charlie Puth</p>
+              </div>
+            </div>
+          </div>
+          <!--3위-->
+          <div
+            class="NJ_chart_list"
+            onmouseover="NJ_change_chart_high(this)"
+            onmouseout="NJ_change_chart_out_high(this)"
+          >
+            <div class="NJ_chart_rank_high">
+              3<span class="NJ_rank_1"> - 0</span>
+            </div>
+            <div class="NJ_chart_title_info">
+              <div class="NJ_chart_title">NIGHT DANCER</div>
+              <div class="NJ_chart_artist">imase</div>
+            </div>
+            <div class="NJ_abm_info2">
+              <div class="NJ_ab_img">
+                <img
+                  src="https://cdnimg.melon.co.kr/cm2/album/images/110/31/616/11031616_20220817122214_500.jpg/melon/quality/80/resize/48/optimize"
+                />
+              </div>
+              <div class="NJ_ab_title">
+                <p><strong>NIGHT DANCER</strong><br />imase</p>
+              </div>
+            </div>
+          </div>
+          <!--4위-->
+          <div
+            class="NJ_chart_list"
+            onmouseover="NJ_change_chart(this)"
+            onmouseout="NJ_change_chart_out(this)"
+          >
+            <div class="NJ_chart_rank">
+              4<span class="NJ_rank_1"> - 0</span>
+            </div>
+            <div class="NJ_chart_title_info">
+              <div class="NJ_chart_title">Steal The Show (From '엘리멘탈')</div>
+              <div class="NJ_chart_artist">Lauv</div>
+            </div>
+            <div class="NJ_abm_info2">
+              <div class="NJ_ab_img">
+                <img
+                  src="https://cdnimg.melon.co.kr/cm2/album/images/112/54/858/11254858_20230531233847_500.jpg/melon/quality/80/resize/48/optimize"
+                />
+              </div>
+              <div class="NJ_ab_title">
+                <p>
+                  <strong>Steal The Show (From '엘리멘탈')</strong><br />Lauv
+                </p>
+              </div>
+            </div>
+          </div>
+          <!--5위-->
+          <div
+            class="NJ_chart_list"
+            onmouseover="NJ_change_chart(this)"
+            onmouseout="NJ_change_chart_out(this)"
+          >
+            <div class="NJ_chart_rank">
+              5<span class="NJ_rank_1"> - 0</span>
+            </div>
+            <div class="NJ_chart_title_info">
+              <div class="NJ_chart_title">That's Hilarious</div>
+              <div class="NJ_chart_artist">Charlie Puth</div>
+            </div>
+            <div class="NJ_abm_info2">
+              <div class="NJ_ab_img">
+                <img
+                  src="https://cdnimg.melon.co.kr/cm2/album/images/112/34/678/11234678_20230502162327_500.jpg/melon/quality/80/resize/48/optimize"
+                />
+              </div>
+              <div class="NJ_ab_title">
+                <p><strong>That's Hilarious</strong><br />Charlie Puth</p>
+              </div>
+            </div>
+          </div>
+          <!--6위-->
+          <div
+            class="NJ_chart_list"
+            onmouseover="NJ_change_chart(this)"
+            onmouseout="NJ_change_chart_out(this)"
+          >
+            <div class="NJ_chart_rank">
+              6<span class="NJ_rank_1"> - 0</span>
+            </div>
+            <div class="NJ_chart_title_info">
+              <div class="NJ_chart_title">STAY</div>
+              <div class="NJ_chart_artist">The Kid LAROI</div>
+            </div>
+            <div class="NJ_abm_info2">
+              <div class="NJ_ab_img">
+                <img
+                  src="https://cdnimg.melon.co.kr/cm2/album/images/106/46/395/10646395_20210707141710_500.jpg/melon/quality/80/resize/48/optimize"
+                />
+              </div>
+              <div class="NJ_ab_title">
+                <p><strong>STAY</strong><br />The Kid LAROI</p>
+              </div>
+            </div>
+          </div>
+          <!--7위-->
+          <div
+            class="NJ_chart_list"
+            onmouseover="NJ_change_chart(this)"
+            onmouseout="NJ_change_chart_out(this)"
+          >
+            <div class="NJ_chart_rank">
+              7<span class="NJ_rank_1"> - 0</span>
+            </div>
+            <div class="NJ_chart_title_info">
+              <div class="NJ_chart_title">
+                That's Not How This Works (feat. Dan + Shay)
+              </div>
+              <div class="NJ_chart_artist">Charlie Puth</div>
+            </div>
+            <div class="NJ_abm_info2">
+              <div class="NJ_ab_img">
+                <img
+                  src="https://cdnimg.melon.co.kr/cm2/album/images/112/12/508/11212508_20230329095440_500.jpg/melon/quality/80/resize/48/optimize"
+                />
+              </div>
+              <div class="NJ_ab_title">
+                <p>
+                  <strong>That's Not How This Works (feat. Dan + Shay)</strong
+                  ><br />Charlie Puth
+                </p>
+              </div>
+            </div>
+          </div>
+          <!--8위-->
+          <div
+            class="NJ_chart_list"
+            onmouseover="NJ_change_chart(this)"
+            onmouseout="NJ_change_chart_out(this)"
+          >
+            <div class="NJ_chart_rank">
+              8<span class="NJ_rank_1"> - 0</span>
+            </div>
+            <div class="NJ_chart_title_info">
+              <div class="NJ_chart_title">
+                Dreamers [Music from the FIFA World Cup Qatar 2022 Official
+                Soundtrack] (Feat. FIFA Sound)
+              </div>
+              <div class="NJ_chart_artist">정국, 방탄소년단</div>
+            </div>
+            <div class="NJ_abm_info2">
+              <div class="NJ_ab_img">
+                <img
+                  src="https://cdnimg.melon.co.kr/cm2/album/images/111/06/209/11106209_20221120120732_500.jpg/melon/quality/80/resize/48/optimize"
+                />
+              </div>
+              <div class="NJ_ab_title">
+                <p>
+                  <strong
+                    >Dreamers [Music from the FIFA World Cup Qatar 2022 Official
+                    Soundtrack] (Feat. FIFA Sound)</strong
+                  ><br />정국, 방탄소년단
+                </p>
+              </div>
+            </div>
+          </div>
+          <!--9위-->
+          <div
+            class="NJ_chart_list"
+            onmouseover="NJ_change_chart(this)"
+            onmouseout="NJ_change_chart_out(this)"
+          >
+            <div class="NJ_chart_rank">
+              9<span class="NJ_rank_1"> - 0</span>
+            </div>
+            <div class="NJ_chart_title_info">
+              <div class="NJ_chart_title">
+                Angel Pt. 1 (Feat. Kodak Black, NLE Choppa, JVKE, Muni Long)
+              </div>
+              <div class="NJ_chart_artist">Fast & Furious: The Fast Saga</div>
+            </div>
+            <div class="NJ_abm_info2">
+              <div class="NJ_ab_img">
+                <img
+                  src="https://cdnimg.melon.co.kr/cm2/album/images/112/45/801/11245801_20230518233315_500.jpg/melon/quality/80/resize/48/optimize"
+                />
+              </div>
+              <div class="NJ_ab_title">
+                <p>
+                  <strong
+                    >Angel Pt. 1 (Feat. Kodak Black, NLE Choppa, JVKE, Muni
+                    Long)</strong
+                  ><br />Fast & Furious: The Fast Saga
+                </p>
+              </div>
+            </div>
+          </div>
+          <!--10위-->
+          <div
+            class="NJ_chart_list"
+            onmouseover="NJ_change_chart(this)"
+            onmouseout="NJ_change_chart_out(this)"
+          >
+            <div class="NJ_chart_rank">
+              10<span class="NJ_rank_1"> - 0</span>
+            </div>
+            <div class="NJ_chart_title_info">
+              <div class="NJ_chart_title">Off My Face</div>
+              <div class="NJ_chart_artist">Justin Bieber</div>
+            </div>
+            <div class="NJ_abm_info2">
+              <div class="NJ_ab_img">
+                <img
+                  src="https://cdnimg.melon.co.kr/cm2/album/images/105/80/103/10580103_20211008114642_500.jpg/melon/quality/80/resize/48/optimize"
+                />
+              </div>
+              <div class="NJ_ab_title">
+                <p><strong>Off My Face</strong><br />Justin Bieber</p>
+              </div>
+            </div>
+          </div>
+          <div class="NJ_chart_list">
+            <div class="NJ_chart_footer">
+              <div class="NJ_chart_footer_btn">
+                <button class="NJ_chart_lbtn">셔플듣기</button>
+              </div>
+              <div class="NJ_chart_footer_a">
+                <a href="#">더보기></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--아티스트차트부분-->
+        <div class="NJ_chart_ats_all">
+          <!--1위-->
+          <div
+            class="NJ_chart_list1"
+            onmouseover="NJ_change_chart_high(this)"
+            onmouseout="NJ_change_chart_out_high(this)"
+          >
+            <!--순위-->
+            <div class="NJ_chart_rank1_high">
+              1<span class="NJ_rank_1_up"> ▲3</span>
+            </div>
+            <div class="NJ_chart_title_info2">
+              <!--노래 제목-->
+              <div class="NJ_chart_title">빈지노 (Beenzino)</div>
+            </div>
+            <div class="NJ_abm_info">
+              <div class="NJ_ab_img">
+                <img
+                  src="https://cdnimg.melon.co.kr/cm2/artistcrop/images/005/32/029/532029_20230620101729_500.jpg/melon/quality/80/resize/48/optimize"
+                />
+              </div>
+              <div class="NJ_ab_title_ats">
+                <p><strong>빈지노 (Beenzino)</strong></p>
+              </div>
+            </div>
+            <div class="NJ_chart_ats_btn"><img src="artist_btn.png" /></div>
+          </div>
+          <div
+            class="NJ_chart_list"
+            onmouseover="NJ_change_chart_high(this)"
+            onmouseout="NJ_change_chart_out_high(this)"
+          >
+            <div class="NJ_chart_rank_high">
+              2<span class="NJ_rank_1_up"> ▲1</span>
+            </div>
+            <div class="NJ_chart_title_info">
+              <div class="NJ_chart_title">방탄소년단</div>
+            </div>
+            <div class="NJ_abm_info2">
+              <div class="NJ_ab_img">
+                <img
+                  src="https://cdnimg.melon.co.kr/cm2/artistcrop/images/006/72/375/672375_20230615142615_500.jpg/melon/quality/80/resize/48/optimize"
+                />
+              </div>
+              <div class="NJ_ab_title_ats">
+                <p><strong>방탄소년단</strong></p>
+              </div>
+            </div>
+            <div class="NJ_chart_ats_btn"><img src="artist_btn.png" /></div>
+          </div>
+          <div
+            class="NJ_chart_list"
+            onmouseover="NJ_change_chart_high(this)"
+            onmouseout="NJ_change_chart_out_high(this)"
+          >
+            <div class="NJ_chart_rank_high">
+              3<span class="NJ_rank_1_down"> ▼1</span>
+            </div>
+            <div class="NJ_chart_title_info">
+              <div class="NJ_chart_title">임영웅</div>
+            </div>
+            <div class="NJ_abm_info2">
+              <div class="NJ_ab_img">
+                <img
+                  src="https://cdnimg.melon.co.kr/cm2/artistcrop/images/009/94/944/994944_20230605114643_500.jpg/melon/quality/80/resize/48/optimize"
+                />
+              </div>
+              <div class="NJ_ab_title_ats">
+                <p><strong>임영웅</strong></p>
+              </div>
+            </div>
+            <div class="NJ_chart_ats_btn"><img src="artist_btn.png" /></div>
+          </div>
+          <div
+            class="NJ_chart_list"
+            onmouseover="NJ_change_chart(this)"
+            onmouseout="NJ_change_chart_out(this)"
+          >
+            <div class="NJ_chart_rank">
+              4<span class="NJ_rank_1_down"> ▼3</span>
+            </div>
+            <div class="NJ_chart_title_info">
+              <div class="NJ_chart_title">정국</div>
+            </div>
+            <div class="NJ_abm_info2">
+              <div class="NJ_ab_img">
+                <img
+                  src="https://cdnimg.melon.co.kr/cm2/artistcrop/images/007/25/987/725987_20221024121346_500.jpg/melon/resize/104/quality/80/optimize"
+                />
+              </div>
+              <div class="NJ_ab_title_ats">
+                <p><strong>정국</strong></p>
+              </div>
+            </div>
+            <div class="NJ_chart_ats_btn"><img src="artist_btn.png" /></div>
+          </div>
+          <div
+            class="NJ_chart_list"
+            onmouseover="NJ_change_chart(this)"
+            onmouseout="NJ_change_chart_out(this)"
+          >
+            <div class="NJ_chart_rank">
+              5<span class="NJ_rank_1"> - 0</span>
+            </div>
+            <div class="NJ_chart_title_info">
+              <div class="NJ_chart_title">IVE (아이브)</div>
+            </div>
+            <div class="NJ_abm_info2">
+              <div class="NJ_ab_img">
+                <img
+                  src="https://cdnimg.melon.co.kr/cm2/artistcrop/images/030/55/146/3055146_20230410142647_500.jpg/melon/quality/80/resize/48/optimize"
+                />
+              </div>
+              <div class="NJ_ab_title_ats">
+                <p><strong>IVE (아이브)</strong></p>
+              </div>
+            </div>
+            <div class="NJ_chart_ats_btn"><img src="artist_btn.png" /></div>
+          </div>
+          <div
+            class="NJ_chart_list"
+            onmouseover="NJ_change_chart(this)"
+            onmouseout="NJ_change_chart_out(this)"
+          >
+            <div class="NJ_chart_rank">
+              6<span class="NJ_rank_1"> - 0</span>
+            </div>
+            <div class="NJ_chart_title_info">
+              <div class="NJ_chart_title">(여자)아이들</div>
+            </div>
+            <div class="NJ_abm_info2">
+              <div class="NJ_ab_img">
+                <img
+                  src="https://cdnimg.melon.co.kr/cm2/artistcrop/images/021/37/482/2137482_20230502151359_500.jpg/melon/quality/80/resize/48/optimize"
+                />
+              </div>
+              <div class="NJ_ab_title_ats">
+                <p><strong>(여자)아이들</strong></p>
+              </div>
+            </div>
+            <div class="NJ_chart_ats_btn"><img src="artist_btn.png" /></div>
+          </div>
+          <div
+            class="NJ_chart_list"
+            onmouseover="NJ_change_chart(this)"
+            onmouseout="NJ_change_chart_out(this)"
+          >
+            <div class="NJ_chart_rank">
+              7<span class="NJ_rank_1"> - 0"</span>
+            </div>
+            <div class="NJ_chart_title_info">
+              <div class="NJ_chart_title">LE SSERAFIM (르세라핌)</div>
+            </div>
+            <div class="NJ_abm_info2">
+              <div class="NJ_ab_img">
+                <img
+                  src="https://cdnimg.melon.co.kr/cm2/artistcrop/images/030/92/950/3092950_20230428172731_500.jpg/melon/quality/80/resize/48/optimize"
+                />
+              </div>
+              <div class="NJ_ab_title_ats">
+                <p><strong>LE SSERAFIM (르세라핌)</strong></p>
+              </div>
+            </div>
+            <div class="NJ_chart_ats_btn"><img src="artist_btn.png" /></div>
+          </div>
+          <div
+            class="NJ_chart_list"
+            onmouseover="NJ_change_chart(this)"
+            onmouseout="NJ_change_chart_out(this)"
+          >
+            <div class="NJ_chart_rank">
+              8<span class="NJ_rank_1"> - 0</span>
+            </div>
+            <div class="NJ_chart_title_info">
+              <div class="NJ_chart_title">세븐틴 (SEVENTEEN)</div>
+            </div>
+            <div class="NJ_abm_info2">
+              <div class="NJ_ab_img">
+                <img
+                  src="https://cdnimg.melon.co.kr/cm2/artistcrop/images/008/61/436/861436_20230424120015_500.jpg/melon/quality/80/resize/48/optimize"
+                />
+              </div>
+              <div class="NJ_ab_title_ats">
+                <p><strong>세븐틴 (SEVENTEEN)</strong></p>
+              </div>
+            </div>
+            <div class="NJ_chart_ats_btn"><img src="artist_btn.png" /></div>
+          </div>
+          <div
+            class="NJ_chart_list"
+            onmouseover="NJ_change_chart(this)"
+            onmouseout="NJ_change_chart_out(this)"
+          >
+            <div class="NJ_chart_rank">
+              9<span class="NJ_rank_1"> - 0</span>
+            </div>
+            <div class="NJ_chart_title_info">
+              <div class="NJ_chart_title">NewJeans</div>
+            </div>
+            <div class="NJ_abm_info2">
+              <div class="NJ_ab_img">
+                <img
+                  src="https://cdnimg.melon.co.kr/cm2/artistcrop/images/031/14/174/3114174_20230102131651_500.jpg/melon/quality/80/resize/48/optimize"
+                />
+              </div>
+              <div class="NJ_ab_title_ats">
+                <p><strong>NewJeans</strong></p>
+              </div>
+            </div>
+            <div class="NJ_chart_ats_btn"><img src="artist_btn.png" /></div>
+          </div>
+          <div
+            class="NJ_chart_list"
+            onmouseover="NJ_change_chart(this)"
+            onmouseout="NJ_change_chart_out(this)"
+          >
+            <div class="NJ_chart_rank">
+              10<span class="NJ_rank_1_up"> ▲1</span>
+            </div>
+            <div class="NJ_chart_title_info">
+              <div class="NJ_chart_title">아이유</div>
+            </div>
+            <div class="NJ_abm_info2">
+              <div class="NJ_ab_img">
+                <img
+                  src="https://cdnimg.melon.co.kr/cm2/artistcrop/images/002/61/143/261143_20210325180240_500.jpg/melon/resize/104/quality/80/optimize"
+                />
+              </div>
+              <div class="NJ_ab_title_ats">
+                <p><strong>아이유</strong></p>
+              </div>
+            </div>
+            <div class="NJ_chart_ats_btn"><img src="artist_btn.png" /></div>
+          </div>
+          <div class="NJ_chart_list">
+            <div class="NJ_chart_footer">
+              <div class="NJ_chart_footer_a">
+                <a href="#">더보기></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function change_wrap() {
+        let item_content = [
+          {
+            img1: "https://cdnimg.melon.co.kr/cm2/mv/images/wide/502/62/530/50262530_20230623105709_640.jpg/melon/resize/480/quality/80/optimize",
+            singer1: "다이나믹 듀오",
+            link1:
+              "https://www.melon.com/video/detail2.htm?mvId=50262530&menuId=10010101",
+            title1: "19",
+            mel_link1: "https://www.naver.com",
+            mel_title1: "멜론TV",
+          },
+          {
+            img1: "https://cdnimg.melon.co.kr/cm2/mv/images/wide/502/62/599/50262599_20230626174710_640.jpg/melon/resize/480/quality/80/optimize",
+            singer1: "SHINee (샤이니)",
+            link1:
+              "https://www.melon.com/video/detail2.htm?mvId=50262530&menuId=10010101",
+            title1: "HARD",
+            mel_link1: "https://www.melon.com/tv/index.htm",
+            mel_title1: "멜론TV",
+          },
+          {
+            img1: "https://cdnimg.melon.co.kr/cm2/mv/images/wide/502/62/632/50262632_20230630151854_640.jpg/melon/resize/480/quality/80/optimize",
+            singer1: "YENA (최예나)",
+            link1:
+              "https://www.melon.com/video/detail2.htm?mvId=50262632&menuId=10010101",
+            title1: "Hate Rodrigo (Feat. 우기 ((여자)아이들))",
+            mel_link1: "https://www.melon.com/tv/index.htm",
+            mel_title1: "멜론TV",
+          },
+          {
+            img1: "https://cdnimg.melon.co.kr/cm2/mv/images/wide/502/62/658/50262658_20230628181036_640.jpg/melon/resize/480/quality/80/optimize",
+            singer1: "TREASURE (트레저)",
+            link1:
+              "https://www.melon.com/video/detail2.htm?mvId=50262658&menuId=26020101",
+            title1: "MOVE",
+            mel_link1: "https://www.melon.com/tv/index.htm",
+            mel_title1: "멜론TV",
+          },
+          {
+            img1: "https://cdnimg.melon.co.kr/cm2/mv/images/wide/502/62/586/50262586_20230626151601_640.jpg/melon/resize/480/quality/80/optimize",
+            singer1: "한승우",
+            link1:
+              "https://www.melon.com/video/detail2.htm?mvId=50262586&menuId=10010101",
+            title1: "Dive Into",
+            mel_link1: "https://www.melon.com/tv/index.htm",
+            mel_title1: "멜론TV",
+          },
+          {
+            img1: "https://cdnimg.melon.co.kr/cm2/mv/images/wide/502/62/797/50262797_20230703164714_640.jpg/melon/resize/480/quality/80/optimize",
+            singer1: "NMIXX",
+            link1:
+              "https://www.melon.com/video/detail2.htm?mvId=50262797&menuId=29010101",
+            title1: "Roller Coaster",
+            mel_link1: "https://www.melon.com/tv/index.htm",
+            mel_title1: "멜론TV",
+          },
+        ];
+
+        let items = document.querySelectorAll(".NJ_item");
+        let item;
+
+        for (let i = 0; i < 6; i++) {
+          item = items[i];
+          let str =
+            "<a href='" +
+            item_content[i].link1 +
+            "'>" +
+            "<img class='NJ_Artists_img' src='" +
+            item_content[i].img1 +
+            "'>" +
+            "<p class='NJ_music_title'>" +
+            item_content[i].title1 +
+            "</p>" +
+            "<p class='NJ_music_artist'>" +
+            item_content[i].singer1 +
+            "</p></a>" +
+            "<a href='" +
+            item_content[i].mel_link1 +
+            "'><p class='NJ_tv_txt'>" +
+            item_content[i].mel_title1 +
+            "</p></a>";
+
+          item.innerHTML = str;
+        }
+      }
+      function change_wrap2() {
+        let item_content = [
+          {
+            img1: "https://cdnimg.melon.co.kr/resource/image/cds/musicstory/imgUrl20230703033429060.png",
+            event1: "매거진 이벤트",
+            link1:
+              "https://www.melon.com/musicstory/inform.htm?mstorySeq=13916",
+            title1:
+              "히사이시 조의 새로운 도전, 교향악으로 만나는 '지브리 사운드'",
+            mel_link1: "https://www.melon.com/musicstory/today/index.htm",
+            mel_title1: "멜론매거진",
+          },
+          {
+            img1: "https://cdnimg.melon.co.kr/resource/image/cds/musicstory/imgUrl20230703040214324.jpg",
+            event1: "비하인드 컷",
+            link1:
+              "https://www.melon.com/musicstory/inform.htm?mstorySeq=13917",
+            title1: "'나와 내 이웃에게' 보내는 허회경의 다정한 위로",
+            mel_link1: "https://www.melon.com/musicstory/today/index.htm",
+            mel_title1: "멜론매거진",
+          },
+          {
+            img1: "https://cdnimg.melon.co.kr/resource/image/cds/musicstory/imgUrl20230628053257521.jpg",
+            event1: "트렌드 클리핑",
+            link1:
+              "https://www.melon.com/musicstory/inform.htm?mstorySeq=13915",
+            title1: "'BUSINESS IS BUSINESS.' Young Thug & Gunna",
+            mel_link1: "https://www.melon.com/musicstory/today/index.htm",
+            mel_title1: "멜론매거진",
+          },
+          {
+            img1: "https://cdnimg.melon.co.kr/resource/image/cds/musicstory/imgUrl20230630102434753.jpg",
+            event1: "트렌드 클리핑",
+            link1:
+              "https://www.melon.com/musicstory/inform.htm?mstorySeq=13920",
+            title1: "9월, god가 돌아온다.",
+            mel_link1: "https://www.melon.com/musicstory/today/index.htm",
+            mel_title1: "멜론매거진",
+          },
+          {
+            img1: "https://cdnimg.melon.co.kr/resource/image/cds/musicstory/imgUrl20230704025218219.jpg",
+            event1: "비하인드 컷",
+            link1:
+              "https://www.melon.com/musicstory/inform.htm?mstorySeq=13929",
+            title1:
+              "계절의 향과 질감을 그려내는 전진희의 정규 3집, [아무도 모르게]",
+            mel_link1: "https://www.melon.com/musicstory/today/index.htm",
+            mel_title1: "멜론매거진",
+          },
+          {
+            img1: "https://cdnimg.melon.co.kr/resource/image/cds/musicstory/imgUrl20230704011455400.jpg",
+            event1: "메거진 이벤트",
+            link1:
+              "https://www.melon.com/musicstory/inform.htm?mstorySeq=13922",
+            title1: "'엔젤'에게 전달하는 틴탑만의 확실한 약속 [4SHO]",
+            mel_link1: "https://www.melon.com/musicstory/today/index.htm",
+            mel_title1: "멜론매거진",
+          },
+        ];
+
+        let items = document.querySelectorAll(".NJ_item");
+        let item;
+
+        for (let i = 0; i < 6; i++) {
+          item = items[i];
+          let str =
+            "<a href='" +
+            item_content[i].link1 +
+            "'>" +
+            "<img class='NJ_Artists_img' src='" +
+            item_content[i].img1 +
+            "'>" +
+            "<p class='NJ_music_title'>" +
+            item_content[i].title1 +
+            "</p>" +
+            "<p class='NJ_music_artist'>" +
+            item_content[i].event1 +
+            "</p></a>" +
+            "<a href='" +
+            item_content[i].mel_link1 +
+            "'><p class='NJ_tv_txt'>" +
+            item_content[i].mel_title1 +
+            "</p></a>";
+
+          item.innerHTML = str;
+        }
+        let rightPage = document.getElementById("NJ_first_no");
+        rightPage.innerHTML = "1/<strong>2</strong>";
+      }
+      //멜론 차트
+      //TOP100
+      function changeTop100() {
+        let btn_top = document.getElementById("NJ_btn_top");
+        btn_top.style.color = "#7cb710";
+        btn_top.style.borderTopColor = "#7cb710";
+        let btn_pop = document.getElementById("NJ_btn_pop");
+        btn_pop.style.color = "#666";
+        btn_pop.style.borderTopColor = "#666";
+        let btn_ats = document.getElementById("NJ_btn_ats");
+        btn_ats.style.color = "#666";
+        btn_ats.style.borderTopColor = "#666";
+        let top_time = document.getElementById("NJ_time");
+        top_time.innerHTML = "<p>2023.07.06 <strong>09:00</strong>기준</p>";
+        let print_top = document.querySelector(".NJ_chart_top_all");
+        print_top.style.display = "block";
+        let print_pop = document.querySelector(".NJ_chart_pop_all");
+        print_pop.style.display = "none";
+        let print_ats = document.querySelector(".NJ_chart_ats_all");
+        print_ats.style.display = "none";
+      }
+      function changePop() {
+        let btn_top = document.getElementById("NJ_btn_top");
+        btn_top.style.color = "#666";
+        btn_top.style.borderTopColor = "#666";
+        let btn_pop = document.getElementById("NJ_btn_pop");
+        btn_pop.style.color = "#7cb710";
+        btn_pop.style.borderTopColor = "#7cb710";
+        let btn_ats = document.getElementById("NJ_btn_ats");
+        btn_ats.style.color = "#666";
+        btn_ats.style.borderTopColor = "#666";
+        let top_time = document.getElementById("NJ_time");
+        top_time.innerHTML = "<p>2023.07.04 기준</p>";
+        let print_top = document.querySelector(".NJ_chart_top_all");
+        print_top.style.display = "none";
+        let print_pop = document.querySelector(".NJ_chart_pop_all");
+        print_pop.style.display = "block";
+        let print_ats = document.querySelector(".NJ_chart_ats_all");
+        print_ats.style.display = "none";
+      }
+      function changeArtist() {
+        let btn_top = document.getElementById("NJ_btn_top");
+        btn_top.style.color = "#666";
+        btn_top.style.borderTopColor = "#666";
+        let btn_pop = document.getElementById("NJ_btn_pop");
+        btn_pop.style.color = "#666";
+        btn_pop.style.borderTopColor = "#666";
+        let btn_ats = document.getElementById("NJ_btn_ats");
+        btn_ats.style.color = "#7cb710";
+        btn_ats.style.borderTopColor = "#7cb710";
+        let top_time = document.getElementById("NJ_time");
+        top_time.innerHTML = "<p>2023.07.04 기준</p>";
+        let print_top = document.querySelector(".NJ_chart_top_all");
+        print_top.style.display = "none";
+        let print_pop = document.querySelector(".NJ_chart_pop_all");
+        print_pop.style.display = "none";
+        let print_ats = document.querySelector(".NJ_chart_ats_all");
+        print_ats.style.display = "block";
+      }
+
+      function NJ_change_chart(a) {
+        let b = a.firstElementChild.nextElementSibling;
+        b.className = "NJ_chart_title_info2";
+        a.className = "NJ_chart_list1";
+        let c = b.nextElementSibling;
+        c.className = "NJ_abm_info";
+        let d = a.firstElementChild;
+        d.className = "NJ_chart_rank1";
+      }
+      function NJ_change_chart_out(a) {
+        let b = a.firstElementChild.nextElementSibling;
+        b.className = "NJ_chart_title_info";
+        a.className = "NJ_chart_list";
+        let c = b.nextElementSibling;
+        c.className = "NJ_abm_info2";
+        let d = a.firstElementChild;
+        d.className = "NJ_chart_rank";
+      }
+      function NJ_change_chart_high(a) {
+        let b = a.firstElementChild.nextElementSibling;
+        b.className = "NJ_chart_title_info2";
+        a.className = "NJ_chart_list1";
+        let c = b.nextElementSibling;
+        c.className = "NJ_abm_info";
+        let d = a.firstElementChild;
+        d.className = "NJ_chart_rank1_high";
+      }
+      function NJ_change_chart_out_high(a) {
+        let b = a.firstElementChild.nextElementSibling;
+        b.className = "NJ_chart_title_info";
+        a.className = "NJ_chart_list";
+        let c = b.nextElementSibling;
+        c.className = "NJ_abm_info2";
+        let d = a.firstElementChild;
+        d.className = "NJ_chart_rank_high";
+      }
+    </script>
+    <!-- footer aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-->
+    <div class="jw_wrap">
+      <div class="jw_top">
+        <div class="jw_top_list">
+          <ul class="jw_menu1">
+            <li class="jw_font1">
+              <a
+                class="jw_a"
+                href="https://www.melon.com/customer/announce/index.htm"
+                title="공지사항"
+                >공지사항</a
+              >
+            </li>
+            <li class="jw_font2">
+              <a
+                class="jw_a"
+                href="https://www.melon.com/customer/announce/infomAnnounce.htm?seq=1056"
+                title="멜론서비스 점검 안내"
+                >멜론서비스 점검 안내</a
+              >
+            </li>
+            <li class="jw_magin">2023.07.06</li>
+          </ul>
+
+          <ul class="jw_menu2">
+            <li class="jw_magin2">
+              <a class="jw_a" href="//www.melon.com/m6/campaign.htm"
+                ><span>멜론6.0 둘러보기</span></a
+              >
+            </li>
+            <li class="jw_magin2">
+              <a class="jw_a" href="//studio.melon.com/"
+                ><span>멜론 스튜디오</span></a
+              >
+            </li>
+            <li class="jw_magin2">
+              <a
+                class="jw_a"
+                href="//www.melon.com/customer/serviceintro/index.htm"
+                ><span>Windows 플레이어</span></a
+              >
+            </li>
+            <li class="jw_magin2">
+              <a
+                class="jw_a"
+                href="//www.melon.com/customer/serviceintro/multi_pc_web.htm"
+                ><span>Mac 플레이어</span></a
+              >
+            </li>
+            <li class="jw_magin2">
+              <a
+                class="jw_a"
+                href="//www.melon.com/customer/serviceintro/ipad.htm"
+                ><span>iPad</span></a
+              >
+            </li>
+            <li class="jw_magin2">
+              <a class="jw_a" href="//faqs2.melon.com/customer/index.htm"
+                ><span>고객센터</span></a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <hr class="jw_hr" />
+
+      <div class="jw_mid">
+        <ul class="jw_menu3">
+          <li class="jw_first_child">
+            <a
+              class="jw_a"
+              href="//info.melon.com/terms/web/terms1_1.html"
+              title="이용약관"
+              >이용약관</a
+            >
+          </li>
+          <li class="jw_first_child">
+            <a
+              class="jw_a"
+              href="//info.melon.com/terms/web/terms1_3.html"
+              title="위치기반서비스 이용약관"
+              ><strong> 위치기반서비스 이용약관 </strong></a
+            >
+          </li>
+          <li class="jw_first_child">
+            <a
+              class="jw_a"
+              href="//info.melon.com/terms/web/terms3.html"
+              title="개인정보처리방침"
+              ><strong> 개인정보처리방침 </strong></a
+            >
+          </li>
+          <li class="jw_first_child">
+            <a
+              class="jw_a"
+              href="//info.melon.com/terms/web/terms5_1.html"
+              title="청소년보호정책"
+              >청소년보호정책</a
+            >
+          </li>
+          <li class="jw_first_child">
+            <a
+              class="jw_a"
+              href="https://faqs2.melon.com/customer/faq/informFaq.htm?no=1&faqId=QUES20140616000001&SEARCH_KEY=&SEARCH_PAR_CATEGORY=CATE20130909000006&SEARCH_CATEGORY=CATE20130909000021"
+              title="제휴/프로모션문의"
+              >제휴/프로모션문의</a
+            >
+          </li>
+          <li class="jw_first_child">
+            <a
+              class="jw_a"
+              href="javascript:openEmailCollectionReject();"
+              title="이메일주소무단수집거부"
+              >이메일주소무단수집거부</a
+            >
+          </li>
+          <li class="jw_first_child">
+            <a
+              class="jw_a"
+              href="//partner.melon.com/partrct/login/web/login_loginProcess.htm?t=s"
+              title="파트너센터"
+              >파트너센터</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div class="jw_bottom">
+        <span
+          ><strong>(주)카카오엔터테인먼트</strong>&nbsp;&nbsp;경기도 성남시
+          분당구 판교역로 221</span
+        >
+        <span>대표이사 : 이진수, 김성수</span>
+        <span>사업자등록번호 : 220-88-02594</span>
+        <span
+          >통신판매업신고번호 : 2018-성남분당B-0004
+          <a
+            class="jw_a"
+            href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=2208802594"
+            title="사업자정보확인"
+            >사업자정보확인></a
+          ></span
+        >
+        <br />
+        <span class="">문의전화 : 1566-7727 (평일 09:00-18:00, 유료)</span>
+        <span
+          >이메일 :
+          <a class="jw_a" href="mailto:melon_info@kakaoent.com" class=""
+            >melon_info@kakaoent.com</a
+          ></span
+        >
+        <span>호스팅서비스사업자 : (주)카카오엔터테인먼트</span>
+        <span
+          ><a class="jw_a" href="//kakaoent.com" class=""
+            >© Kakao Entertainment Corp.</a
+          ></span
+        >
+      </div>
+    </div>
+  </body>
+  <script>
+    let interval;
+    // addEventListener는 이벤트를 등록하는 방식이며 여러개의 이벤트핸들러를 등록가능
+    document.addEventListener("DOMContentLoaded", () => {
+      // 롤링 초기화
+      interval = window.setInterval(rollingCallback, 3000);
+    });
+
+    function rollingCallback() {
+      //.prev 클래스 삭제
+      document.querySelector(".rollingbanner .prev").classList.remove("prev");
+
+      //.current -> .prev
+      let current = document.querySelector(".rollingbanner .current");
+      current.classList.remove("current");
+      current.classList.add("prev");
+
+      //.next -> .current
+      let next = document.querySelector(".rollingbanner .next");
+      //다음 목록 요소가 널인지 체크
+      if (next.nextElementSibling == null) {
+        document
+          .querySelector(".rollingbanner ul li:first-child")
+          .classList.add("next");
+      } else {
+        //목록 처음 요소를 다음 요소로 선택
+        next.nextElementSibling.classList.add("next");
+      }
+      next.classList.remove("next");
+      next.classList.add("current");
+    }
+  </script>
+</html>

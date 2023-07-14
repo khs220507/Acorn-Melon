@@ -2,6 +2,7 @@
     width: 1008px;
     height: 380px;
     border: 1px solid black;
+    margin: 0 auto;
 }
 
 .hs_album_wrap {
@@ -45,14 +46,15 @@
     text-decoration: none;
 }
 
-#hs_odd_span_left{
-    width: 10px;
-    height: 20px;
+#hs_btn_page_left{
+    padding: 0;
+    color: #00d344;
+    border-color: #00d344;
 }
-
-#hs_odd_span_right{
-    width: 10px;
-    height: 20px;
+#hs_btn_page_right{
+    padding: 0;
+    color: #00d344;
+    border-color: #00d344;
 }
 
 
@@ -138,6 +140,11 @@
     position: relative;
 }
 
+.hs_hover_content_detail{
+    color: white;
+    transition: 0.5s;
+}
+
 #hs_album_frame{
     position: relative;
     
@@ -205,7 +212,13 @@
 
 
 /* 수정 필요 */
-li {
+.hs_top_right_element {
+    float: left;
+    list-style: none;
+    margin-left: 5px;
+}
+
+.hs_top_right_element_center{
     float: left;
     list-style: none;
     margin-left: 5px;
@@ -227,6 +240,10 @@ li {
 .hs_button_login {
     font-size: 5px;
     text-align: center;
+}
+
+.hs_login_btn{
+    
 }
 
 
@@ -282,13 +299,15 @@ li {
     margin: 5px;
 }
 
-.hs_btn_login_text{
-    color: white;
-}
 
 .hs_button_login{
     border: none;
     margin-top:30px
+}
+
+.hs_login_btn_text_detail{
+    color: white;
+    text-decoration: none;
 }
 
 .hs_top_box{

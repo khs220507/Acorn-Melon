@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script>
+      document.addEventListener("click", function (event) {
+        let tooltip = document.getElementById("tooltip");
+        let image = document.getElementById("image");
+
+        if (event.target === image) {
+          tooltip.classList.add("show");
+        } else {
+          tooltip.classList.remove("show");
+        }
+      });
+    </script>
+    <style>
+      .jy_total {
+        position: relative;
+        width: 100%;
+        border-top: 4px solid#fee500;
+        margin-top: -8px;
+        /* border: 1px solid black; */
+        font-family: "돋움", Dotum, "맑은 고딕", "Malgun Gothic", "Apple Gothic",
+          sans-serif;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+      .jy_wrap {
+        border: solid 2px var(--GRAY125S, #e5e5e5);
+        width: 580px;
+        justify-content: space-between;
+        margin: 0 auto;
+      }
+      .jy_header {
+        /* border: 1px solid black; */
+        margin: 0 auto;
+        width: 550px;
+        margin-bottom: 10px;
+      }
+      .jy_header > img {
+        width: 108px;
+        height: 30px;
+        margin-top: 59px;
+        margin-bottom: 51px;
+      }
+
+      .jy_body {
+        width: 600px;
+        /* border: solid 2px var(--GRAY125S, #e5e5e5); */
+        /* border: 1px solid black; */
+        border-radius: 2px;
+        margin: 0 auto;
+        font-family: "Apple SD Gothic Neo", "Noto Sans KR", "맑은 고딕",
+          "Malgun Gothic", 돋움, Dotum, sans-serif;
+      }
+      #login-form {
+        display: flex;
+        flex-direction: column;
+        margin: 70px 68px;
+      }
+
+      #login-form input {
+        padding: 10px 0px;
+        border: 0 solid black;
+        font-size: 18px;
+        border-bottom: 1px solid rgba(0, 0, 0, 1);
+        margin-bottom: 25px;
+        transition: border-color 0.3s ease-in-out;
+      }
+
+      #login-form input:not([type="submit"]) {
+        border-bottom: 1px solid rgba(0, 0, 0, 1);
+        transition: border-color 0.3s ease-in-out;
+      }
+
+      #login-form input::placeholder {
+        color: rgba(0, 0, 0, 1);
+        border: none;
+      }
+      .tooltip-container {
+        position: relative;
+        display: inline-block;
+      }
+      .tooltip-container img {
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        top: -79px;
+        left: -64px;
+      }
+
+      .tooltip {
+        display: none;
+        position: absolute;
+        right: -92px;
+        top: -54px;
+        background-color: #000;
+        color: #fff;
+        padding: 5px;
+        border-radius: 3px;
+        z-index: 1;
+        font-size: 12px;
+        font-family: -apple-system, Roboto, NotoSans, AppleSDGothicNeo,
+          Malgun Gothic, 맑은 고딕, 돋움, dotum, sans-serif;
+      }
+
+      .tooltip.show {
+        display: block;
+        width: 300px;
+      }
+      .tooltip a {
+        color: yellow;
+        font-size: 12px;
+        text-decoration: none;
+        font-family: -apple-system, Roboto, NotoSans, AppleSDGothicNeo,
+          Malgun Gothic, 맑은 고딕, 돋움, dotum, sans-serif;
+      }
+
+      .jy_btnmenu {
+        width: 585px;
+        height: 257px;
+        margin: 0 auto;
+        margin-top: 1px;
+      }
+      .jy_btnmenu a {
+        text-decoration: none;
+        color: black;
+        font-size: 18px;
+      }
+
+      .jy_btn1 {
+        width: 440px;
+        height: 60px;
+        background-color: #fee500;
+        margin-bottom: 10px;
+        border: none;
+        border-radius: 7px;
+      }
+      .jy_btn2 {
+        width: 440px;
+        height: 60px;
+        background-color: #f0f0f0;
+        border-radius: 7px;
+        border: none;
+      }
+      .jy_checkboxwrap {
+        /* border: 1px solid black; */
+        float: left;
+        margin-left: 70px;
+        margin-top: -65px;
+        cursor: pointer;
+      }
+
+      .hr-sect {
+        display: flex;
+        flex-basis: 100%;
+        align-items: center;
+        color: rgba(0, 0, 0, 0.2);
+        font-size: 12px;
+        margin: 8px 65px;
+        margin-bottom: 10px;
+      }
+      .hr-sect::before,
+      .hr-sect::after {
+        content: "";
+        flex-grow: 1;
+        background: rgba(0, 0, 0, 0.2);
+        height: 1px;
+        font-size: 0px;
+        line-height: 0px;
+        margin: 0px 16px;
+      }
+      .jy_underbody {
+        display: flex;
+        align-items: center;
+        margin: 0 auto;
+        text-align: center;
+        justify-content: center;
+        /* border: 1px solid black; */
+      }
+      .jy_underbody a {
+        text-decoration: none;
+        color: black;
+      }
+      .jy_membership {
+        /* border: 1px solid black; */
+        margin-left: 10px;
+        margin-top: -100px;
+      }
+      .jy_find {
+        /* border: 1px solid black; */
+        margin-left: 190px;
+        margin-top: -100px;
+      }
+
+      .jy_footermenu {
+        list-style: none;
+        margin: 0 auto;
+        width: 600px;
+        /* border: 1px solid black; */
+      }
+      .jy_footerbox {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;
+      }
+      .jy_footerbox ul {
+        list-style: none;
+        display: flex;
+        text-align: center;
+        margin: 0 auto;
+      }
+      .jy_footerbox a {
+        color: black;
+        text-decoration: none;
+        color: #4c4c4c;
+        font-size: 14px;
+      }
+      .jy_footerCorp a {
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 13px;
+        text-decoration: none;
+      }
+      input[type="checkbox"] {
+      }
+
+      input[type="checkbox"]:checked {
+        appearance: none;
+        background-color: yellow;
+        width: 13px;
+        height: 13px;
+        border: 2px solid black;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="jy_total">
+      <div class="jy_header">
+        <img
+          src="https://blog.kakaocdn.net/dn/bs3FCA/btrb9RkmWNs/aKP2QY1XuKYFLK0VSygsgK/%EC%B9%B4%EC%B9%B4%EC%98%A4%20%EB%A1%9C%EA%B3%A0%20Brown.png?attach=1&knm=img.png"
+        />
+      </div>
+      <div class="jy_wrap">
+        <div class="jy_body">
+          <form id="login-form">
+            <input
+              type="text"
+              placeholder="카카오메일 아이디,이메일,전화번호"
+            />
+            <input type="password" placeholder="비밀번호" />
+          </form>
+          <div class="jy_checkboxwrap">
+            <input type="checkbox" id="jy_checkbox" />
+            <label for="jy_checkbox">로그인 상태 유지</label>
+          </div>
+        </div>
+        <div class="tooltip-container">
+          <img
+            src="https://cdn.icon-icons.com/icons2/1993/PNG/512/circle_customer_help_info_information_service_support_icon_123208.png"
+            alt="이미지"
+            id="image"
+          />
+          <div class="tooltip" id="tooltip">
+            개인정보 보호를 위해 개인 기기에서만 사용해 주세요. <br />
+            <a
+              href="https://cs.kakao.com/helps?category=166&locale=ko&service=52&articleId=1073192624&device=423"
+              >도움말 보기</a
+            >
+          </div>
+        </div>
+        <div class="jy_btnmenu">
+          <button class="jy_btn1">
+            <a
+              href="https://accounts.kakao.com/weblogin/create_account/?app_type=web&continue=https%3A%2F%2Fkauth.kakao.com%2Foauth%2Fauthorize%3Fclient_id%3D6cfb479f221a5adc670fe301e1b6690c%26redirect_uri%3Dhttps%253A%252F%252Faccounts.melon.com%252Foauth.htm%26response_type%3Dcode%26state%3DCRYT_T9D0KJ4bSNt%25407%252FGbM01oSzg2aQ78A4keONXbMD8c9tkku4Tu9gaZqnwtJe9JsYWjOO6s2CkcCya16m9cvlKVhPYz09UqH%2540wd8E8GgWt7B%252F4%253D%26encode_state%3Dtrue#confirmTerm"
+              >로그인</a
+            >
+          </button>
+          <div class="hr-sect">또는</div>
+          <button class="jy_btn2">
+            <a
+              href="https://accounts.kakao.com/weblogin/create_account/?app_type=web&continue=https%3A%2F%2Fkauth.kakao.com%2Foauth%2Fauthorize%3Fclient_id%3D6cfb479f221a5adc670fe301e1b6690c%26redirect_uri%3Dhttps%253A%252F%252Faccounts.melon.com%252Foauth.htm%26response_type%3Dcode%26state%3DCRYT_T9D0KJ4bSNt%25407%252FGbM01oSzg2aQ78A4keONXbMD8c9tkku4Tu9gaZqnwtJe9JsYWjOO6s2CkcCya16m9cvlKVhPYz09UqH%2540wd8E8GgWt7B%252F4%253D%26encode_state%3Dtrue#confirmTerm"
+              >QR코드 로그인</a
+            >
+          </button>
+        </div>
+        <div class="jy_underbody">
+          <div class="jy_membership">
+            <a
+              href="http://127.0.0.1:5500/front-main/%EB%A9%9C%EB%A1%A0project/%EC%B9%B4%EC%B9%B4%EC%98%A4%EA%B3%84%EC%A0%95%EB%A7%8C%EB%93%A4%EA%B8%B0.html"
+              >회원가입</a
+            >
+          </div>
+          <div class="jy_find">
+            <a
+              href="https://accounts.kakao.com/weblogin/find_account?lang=ko&continue=%2Flogin%3Fcontinue%3Dhttps%253A%252F%252Fkauth.kakao.com%252Foauth%252Fauthorize%253Fencode_state%253Dtrue%2526response_type%253Dcode%2526redirect_uri%253Dhttps%25253A%25252F%25252Fmember.melon.com%25252Foauth.htm%2526state%253DCRYT_bAluy6fa58TPPFDqTTpjnSovjhbUYIo0lBGhEwiMzlmpLp1jeKUl%25252FgMphBnzrAu37jiY%25252FJx41Ej3DR1ktL5bVA%25253D%25253D%2526through_account%253Dtrue%2526prompt%253Dnull%2526client_id%253D6cfb479f221a5adc670fe301e1b6690c"
+              >계정 찾기
+            </a>
+            <a
+              href="https://accounts.kakao.com/weblogin/find_password?lang=ko&continue=%2Flogin%3Fcontinue%3Dhttps%253A%252F%252Fkauth.kakao.com%252Foauth%252Fauthorize%253Fencode_state%253Dtrue%2526response_type%253Dcode%2526redirect_uri%253Dhttps%25253A%25252F%25252Fmember.melon.com%25252Foauth.htm%2526state%253DCRYT_bAluy6fa58TPPFDqTTpjnSovjhbUYIo0lBGhEwiMzlmpLp1jeKUl%25252FgMphBnzrAu37jiY%25252FJx41Ej3DR1ktL5bVA%25253D%25253D%2526through_account%253Dtrue%2526prompt%253Dnull%2526client_id%253D6cfb479f221a5adc670fe301e1b6690c"
+              >비밀번호 찾기</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="jy_footermenu">
+        <ul class="jy_footerbox">
+          <li>
+            <a href="https://www.kakao.com/policy/terms?lang=ko"
+              >이용약관 &#124;</a
+            >
+          </li>
+          <li>
+            <a href="https://www.kakao.com/policy/privacy?lang=ko"
+              >&nbsp;개인정보 처리방침 &#124;</a
+            >
+          </li>
+          <li>
+            <a href="https://www.kakao.com/policy/oppolicy?lang=ko"
+              >&nbsp;운영정책 &#124;</a
+            >
+          </li>
+          <li><a href="https://cs.kakao.com/">&nbsp;고객센터 &#124;</a></li>
+          <li>
+            <a href="https://www.kakao.com/notices?lang=ko">
+              &nbsp;공지사항 &#124;</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="jy_footerCorp">
+        <a href="https://kakaoent.com/">&copy; Kakao Entertainment Corp.</a>
+      </div>
+    </div>
+  </body>
+</html>
