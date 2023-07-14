@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .jy_wrap {
+        position: relative;
+        width: 100%;
+        border-top: 4px solid#6ec953;
+        margin-top: -8px;
+        /* border: 1px solid black; */
+        font-family: "돋움", Dotum, "맑은 고딕", "Malgun Gothic", "Apple Gothic",
+          sans-serif;
+        /* justify-content: center; */
+        /* align-items: center; */
+        text-align: center;
+      }
+      .jy_logo {
+        /* border: 1px solid black; */
+        margin: 0 auto;
+      }
+      .jy_loginwrap {
+        /* border: 1px solid black; */
+        display: block;
+        margin: 0 auto;
+        width: 390px;
+        height: 300px;
+        display: block;
+        margin-top: 25px;
+      }
+      .jy_login input {
+        display: block;
+        margin: 0 auto;
+        width: 365px;
+        height: 50px;
+        padding-left: 12px;
+        color: #666;
+        border: 1px solid #b6b6b6;
+        border-bottom: 1px solid #ccc;
+      }
+      .jy_loginsub {
+        /* border: 1px solid black; */
+        width: 390px;
+        height: 50px;
+        display: flex;
+        margin-top: 26px;
+        letter-spacing: 0;
+        font-family: "돋움", Dotum, "맑은 고딕", "Malgun Gothic", "Apple Gothic",
+          sans-serif;
+      }
+      .jy_checkbox {
+        margin-right: 10px;
+      }
+      .jy_find {
+        margin-left: 60px;
+      }
+      .jy_find a {
+        text-decoration: none;
+        color: black;
+      }
+      .jy_loginbtn {
+        background-color: #00cd3c;
+        border: none;
+        color: white;
+        width: 390px;
+        height: 65px;
+        text-align: center;
+        color: #fff;
+        line-height: 65px;
+        font-size: 18px;
+        font-family: "맑은 고딕", "Malgun Gothic", "Apple Gothic", sans-serif;
+      }
+
+      .jy_footer {
+        /* border: 1px solid black; */
+        margin: 0 auto;
+        width: 550px;
+        text-align: center;
+      }
+      .jy_footermenu {
+        display: flex;
+        justify-content: center;
+        margin-top: 35px;
+        font-size: 14px;
+        margin-bottom: 30px;
+      }
+      .jy_footermenu a {
+        text-decoration: none;
+        color: black;
+        text-align: 10px;
+      }
+      .jy_footer_information {
+        font-size: 11px;
+      }
+      .jy_footerCorp {
+        font-size: 11px;
+        margin-top: 30px;
+      }
+      .jy_footerCorp a {
+        text-decoration: none;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="jy_wrap">
+      <div class="jy_logo">
+        <img
+          src="https://cdnimg.melon.co.kr/resource/image/web/common/logo_melon142x99.png"
+          title="Melon 메인"
+          style="width: 250px; height: 180px"
+        />
+      </div>
+      <div class="jy_loginwrap">
+        <div class="jy_login">
+          <input
+            type="text"
+            value=""
+            title="아이디 입력 편집창"
+            placeholder="아이디"
+          />
+          <input
+            type="password"
+            title="비밀번호 입력 편집창"
+            placeholder="비밀번호"
+          />
+        </div>
+        <div class="jy_loginsub">
+          <div class="jy_checkbox">
+            <input type="checkbox" value="" />아이디 저장
+          </div>
+          <div class="jy_find">
+            <a href="https://accounts.melon.com/find/id?cpId=WP10"
+              >아이디 찾기</a
+            >
+            &#124;
+            <a href="https://accounts.melon.com/find/pwd?cpId=WP10"
+              >비밀번호 찾기</a
+            >
+          </div>
+        </div>
+        <button class="jy_loginbtn" alert="아이디를 입력해주세요.">
+          로그인
+        </button>
+      </div>
+
+      <div class="jy_footer">
+        <div class="jy_footermenu">
+          <div>
+            <a href="https://info.melon.com/terms/web/terms1_1.html"
+              >이용약관&nbsp;&#124;&nbsp;</a
+            >
+          </div>
+          <div>
+            <a href="https://info.melon.com/terms/web/terms1_3.html"
+              >위치기반서비스 이용약관&nbsp;&#124;&nbsp;</a
+            >
+          </div>
+          <div>
+            <a href="https://info.melon.com/terms/web/terms3.html"
+              >개인정보처리방침</a
+            >
+          </div>
+        </div>
+        <div class="jy_footer_information">
+          <p>문의전화 : 1566-7727 (평일 09:00-18:00. 유료)</p>
+        </div>
+        <div class="jy_footerCorp">
+          <a href="https://kakaoent.com/">&copy; Kakao Entertainment Corp.</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
