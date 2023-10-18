@@ -1,2 +1,2 @@
-# AcornAcademy_TeamProejct_Melon
-[Acorn Academy Team Proejct 1] Melon
+# 에이콘 아카데미 1차 팀프로젝트 : 멜론
+
