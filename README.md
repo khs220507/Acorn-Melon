@@ -7,7 +7,7 @@
 - Practicing collaboration using GIT, SLACK
 
 ## Team Member
-- Hyunsu Kim
+- Hyunsu Kim (Team Leader)
 - Jaeyeol Kim
 - Najeong Moon
 - Jiwon Park
