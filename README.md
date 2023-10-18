@@ -5,3 +5,8 @@
 ## Project Goal
 - Practicing what we learned while taking HTML, CSS, and JAVASCRIPT lectures
 - Practicing collaboration using GIT, SLACK
+
+## Project Period
+-
+
+## Team Member
