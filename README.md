@@ -1,12 +1,9 @@
-# Acorn Academy 1st Team Project : Melon
+# Acorn Academy 1st Team Project : Melon (2023.??.?? ~ 2023.??.??)
 
 ![멜론](https://github.com/khs220507/AcornAcademy_TeamProejct_Melon/assets/129834692/754074e0-7aa0-482d-8dfc-393aaeec9b38)
 
 ## Project Goal
 - Practicing what we learned while taking HTML, CSS, and JAVASCRIPT lectures
 - Practicing collaboration using GIT, SLACK
-
-## Project Period
-- 2023.??.?? ~ 2023.??.??
 
 ## Team Member
