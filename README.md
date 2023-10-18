@@ -8,3 +8,7 @@
 
 ## Team Member
 - Hyunsu Kim
+- Jaeyeol Kim
+- Najeong Moon
+- Jiwon Park
+- Jeonghoon Lee
