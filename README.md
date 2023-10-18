@@ -7,3 +7,4 @@
 - Practicing collaboration using GIT, SLACK
 
 ## Team Member
+- Hyunsu Kim
