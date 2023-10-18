@@ -7,6 +7,6 @@
 - Practicing collaboration using GIT, SLACK
 
 ## Project Period
--
+- 2023.??.?? ~ 2023.??.??
 
 ## Team Member
