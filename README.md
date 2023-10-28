@@ -6,8 +6,8 @@
 - Practicing what we learned while taking HTML, CSS, and JAVASCRIPT lectures
 - Practicing collaboration using GIT, SLACK
 
-## Team Member
-- Hyunsu Kim (Team Leader)
+## Proejct Member
+- Hyunsu Kim (Proejct Leader)
 - Jaeyeol Kim
 - Najeong Moon
 - Jiwon Park
